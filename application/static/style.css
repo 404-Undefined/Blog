@@ -102,8 +102,21 @@ color:black;
 /*=========================================================
    HEADER
 ===========================================================*/
+.post-img{
+     
+}
+.text-post{
+    padding-top: 3vh;
+    padding-left: 5vw;
+    padding-right: 5vw;
+}
+.profile-img{
+    width: 100px;
+}
+.author-t{
+    color: black;
 
-
+}
 .page-header {
     position: relative;
     margin: 0;
@@ -111,6 +124,19 @@ color:black;
     padding-bottom: 60px;
     background-color: #fbfbfd;
     border-bottom: 2px solid #F4f4f9;
+}
+.page-header img{
+    max-width:100%;
+    max-height:100%;  
+    display: block; 
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100vw;
+    object-fit: cover;
+    image-rendering: -webkit-optimize-contrast;
 }
 .page-header .background-img {
     position: absolute;
@@ -120,6 +146,8 @@ color:black;
     bottom: 0;
     background-position: center;
     background-size: cover;
+    /* remove extra space below image */
+
 }
 .page-header .background-img:after {
     content: '';
@@ -220,7 +248,8 @@ color:black;
 }
 .post-meta .post-date {
     font-size: 13px;
-    font-weight: 600;
+
+    font-weight: bold;
 }
 .post .post-title {
     font-size: 18px;
@@ -278,6 +307,22 @@ color:black;
     #nav .nav-menu {
         display: none;
    }
+   .nav-puzzle{
+    border-bottom:none;
+    color: black;
+
+}
+.nav-coding{
+    border-bottom:none;
+    color: black;
+}
+.nav-hardware{
+    border-bottom:none;
+    color: black;
+}
+.navbar-nav > li{
+    text-align: center;
+}
 }
 @media only screen and (max-width: 767px) {
     .page-header h1 {
@@ -317,6 +362,14 @@ color:black;
     text-transform: uppercase;
 }
 
+
+@media screen and (min-width: 1076px){
+    .site-title {
+        font-size: 112px;
+    }
+
+ 
+}
 @media screen and (min-width: 576px){
     .site-title {
         font-size: 112px;

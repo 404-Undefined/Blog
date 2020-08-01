@@ -1,11 +1,38 @@
 {% extends "base.html" %}
 
 {% block content %}
+
+
+<div id="post-header" class="page-header">
+	<div class="background-img">
+		<img class="background-img" src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}">
+	</div>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10">
+				<div class="post-meta">
+					{% for tag in post.tags %}
+						<a class="post-category" style = "background-color: {{tag.colour}};" href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"> {{tag.name}}</a>
+					{% endfor %}</a>
+				</div>
+				<h1>{{ post.title }}</h1>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="text-post">
+	<p class="article-content">{{ post.content|safe }}</p>
+
+</div>
+
 	<article class="media content-section">
-	  <img class="rounded-circle article-img" src="{{url_for('static', filename='profile_pics/' + post.author.image_file)}}">
+
+	  <img class="rounded-circle article-img profile-img" src="{{url_for('static', filename='profile_pics/' + post.author.image_file)}}">
 	  <div class="media-body">
 	    <div class="article-metadata">
-	      <a class="mr-2" href="{{url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a>
+	      <a class="mr-2 author-t" href="{{url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a>
 	      <small class="text-muted">{{ post.date_posted.strftime("%Y/%m/%d") }}</small>
 	      {% if post.author == current_user %}
 	      	<div>
@@ -15,9 +42,8 @@
 
 	      {% endif %}
 	    </div>
-	    <h2 class="article-title"> {{ post.title }} </h2>
-	    <img src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}">
-	    <p class="article-content">{{ post.content|safe }}</p>
+	    
+	
 	  </div>
 	</article>
 <!-- Modal https://getbootstrap.com/docs/4.0/components/modal/ -->
