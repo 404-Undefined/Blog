@@ -1,155 +1,99 @@
 {% extends "base.html" %}
+
 {% block content %}
-<!-- container -->
-<div class="container home-m">
-    <!-- row -->
-    <div class="row">
-
-
-
-        <!-- post -->
-        <div class="col-md-6">
-            <div class="post post-thumb">
-                <a class="post-img" href="blog-post.html"><img src="../static/resources/post-page.jpg" alt=""></a>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <a class="post-category cat-3" href="category.html">Jquery</a>
-                        <span class="post-date">March 27, 2018</span>
+    <!-- container -->
+    <div class="container home-m">
+        <!-- row -->
+        <div class="row">
+            <!-- post -->
+            <div class="col-md-6">
+                <div class="post post-thumb">
+                    <a class="post-img" href="blog-post.html"><img src="../static/resources/post-page.jpg" alt=""></a>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <a class="post-category cat-3" href="category.html">Jquery</a>
+                            <span class="post-date">March 27, 2018</span>
+                        </div>
+                        <h3 class="post-title"><a href="blog-post.html">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a></h3>
                     </div>
-                    <h3 class="post-title"><a href="blog-post.html">Chrome Extension Protects Against JavaScript-Based CPU Side-Channel Attacks</a></h3>
                 </div>
             </div>
-        </div>
-        <!-- /post -->
+            <!-- /post -->
 
-        <!-- post -->
-        <div class="col-md-6">
-            <div class="post post-thumb">
-                <a class="post-img" href="blog-post.html"><img src="../static/resources/post-page.jpg" alt=""></a>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <a class="post-category cat-3" href="category.html">Jquery</a>
-                        <span class="post-date">March 27, 2018</span>
+            <!-- post -->
+            <div class="col-md-6">
+                <div class="post post-thumb">
+                    <a class="post-img" href="blog-post.html"><img src="../static/resources/post-page.jpg" alt=""></a>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <a class="post-category cat-3" href="category.html">Jquery</a>
+                            <span class="post-date">March 27, 2018</span>
+                        </div>
+                        <h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use JQuery?</a></h3>
                     </div>
-                    <h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use JQuery?</a></h3>
                 </div>
             </div>
+            <!-- /post -->
         </div>
-        <!-- /post -->
+        <!-- /row -->
 
+        <!-- row -->
+        <div class="row">
+            <div class="col-md-12">
+                <div class="section-title">
+                    <h2>Recent Posts</h2>
+                </div>
+            </div>
 
+            {% for post in posts.items %}
+                <div class="col-md-4">
+                    <div class="post">
+                        <a class="post-img" href="blog-post.html"><img src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}" alt="post thumbnail"></a>
 
+                        <div class="post-body">
+                            <div class="post-meta">
+                                <!-- <img class="rounded-circle article-img" src="{{url_for('static', filename='profile_pics/' + post.author.image_file)}}"> -->
+                                <a href="{{url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a>
+                                {% for tag in post.tags %}
+                                    <a class="post-category" style = "background-color: {{tag.colour}};" href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"> {{tag.name}}</a>
+                                {% endfor %}
+                                <span class="post-date"> {{ post.date_posted.strftime("%B %d, %Y") }} </span>
+                            </div>
+                        </div>
+                        <h2><a class="post-title" href="{{url_for('posts.post', post_id=post.id)}}">{{ post.title }}</a></h2>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
     </div>
-    <!-- /row -->
 
-    <!-- row -->
-    <div class="row">
-        <div class="col-md-12">
-            <div class="section-title">
-                <h2>Recent Posts</h2>
-            </div>
-        </div>
+    <!-- Pagination
+        left_edge = 1: show one leftmost page,
+        left_current = 1: show one page behind current page,
+        right_current = 2: show the current page and the next page
+        right_edge = 1: show one rightmost page.
 
-        <!-- post -->
-        <div class="col-md-4">
-            <div class="post">
-                <a class="post-img" href="blog-post.html"><img src="../static/resources/post-page.jpg" alt=""></a>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <a class="post-category cat-1" href="category.html">Web Design</a>
-                        <span class="post-date">March 27, 2018</span>
-                    </div>
-                    <h3 class="post-title"><a href="blog-post.html">Pagedraw UI Builder Turns Your Website Design Mockup
-                            Into Code Automatically</a></h3>
-                </div>
-            </div>
-        </div>
-        <!-- /post -->
+        Three styling options:
+        For current page, fill in the button
+        For other pages which are shown, outline button
+        For redacted pages, ...
+    -->
+    {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %} 
+        {% if page_num %}
+            {% if posts.page == page_num %}
+                <a class="btn btn-info mb-4" href="{{url_for('main.home', page=page_num)}}">{{page_num}}</a>
+            {% else %}
+                <a class="btn btn-outline-info mb-4" href="{{url_for('main.home', page=page_num)}}">{{page_num}}</a>
+            {% endif %}
+        {% else %}
+            ...
+        {% endif %}
+    {% endfor %}
 
-        <!-- post -->
-        <div class="col-md-4">
-            <div class="post">
-                <a class="post-img" href="blog-post.html"><img src="../static/resources/post-page.jpg" alt=""></a>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <a class="post-category cat-2" href="category.html">JavaScript</a>
-                        <span class="post-date">March 27, 2018</span>
-                    </div>
-                    <h3 class="post-title"><a href="blog-post.html">Chrome Extension Protects Against JavaScript-Based
-                            CPU Side-Channel Attacks</a></h3>
-                </div>
-            </div>
-        </div>
-        <!-- /post -->
+{% endblock content %} 
 
-        <!-- post -->
-        <div class="col-md-4">
-            <div class="post">
-                <a class="post-img" href="blog-post.html"><img src="../static/resources/post-page.jpg" alt=""></a>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <a class="post-category cat-3" href="category.html">Jquery</a>
-                        <span class="post-date">March 27, 2018</span>
-                    </div>
-                    <h3 class="post-title"><a href="blog-post.html">Ask HN: Does Anybody Still Use JQuery?</a></h3>
-                </div>
-            </div>
-        </div>
-        <!-- /post -->
-
-        <div class="clearfix visible-md visible-lg"></div>
-
-        <!-- post -->
-        <div class="col-md-4">
-            <div class="post">
-                <a class="post-img" href="blog-post.html"><img src="../static/resources/post-page.jpg" alt=""></a>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <a class="post-category cat-2" href="category.html">JavaScript</a>
-                        <span class="post-date">March 27, 2018</span>
-                    </div>
-                    <h3 class="post-title"><a href="blog-post.html">Why Node.js Is The Coolest Kid On The Backend
-                            Development Block!</a></h3>
-                </div>
-            </div>
-        </div>
-        <!-- /post -->
-
-        <!-- post -->
-        <div class="col-md-4">
-            <div class="post">
-                <a class="post-img" href="blog-post.html"><img src="../static/resources/post-page.jpg" alt=""></a>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <a class="post-category cat-4" href="category.html">Css</a>
-                        <span class="post-date">March 27, 2018</span>
-                    </div>
-                    <h3 class="post-title"><a href="blog-post.html">CSS Float: A Tutorial</a></h3>
-                </div>
-            </div>
-        </div>
-        <!-- /post -->
-
-        <!-- post -->
-        <div class="col-md-4">
-            <div class="post">
-                <a class="post-img" href="blog-post.html"><img src="../static/resources/post-page.jpg" alt=""></a>
-                <div class="post-body">
-                    <div class="post-meta">
-                        <a class="post-category cat-4" href="category.html">Css</a>
-                        <span class="post-date">March 27, 2018</span>
-                    </div>
-                    <h3 class="post-title"><a href="blog-post.html">CSS Float: A Tutorial</a></h3>
-                </div>
-            </div>
-        </div>
-
-    </div>
-</div>
-
-    {% endblock content %}
-    {% block javascript %}
+{% block javascript %}
     <script>
         AOS.init();
     </script>
-    {% endblock javascript%}
+{% endblock javascript%}
