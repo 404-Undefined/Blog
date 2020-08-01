@@ -1,0 +1,256 @@
+body {
+    font-family: 'Open Sans', sans-serif !important;
+
+
+}
+
+.navb {
+    background-color: black;
+    box-shadow: 10px 10px 5px grey;
+
+}
+
+.wc {
+    margin: 10px;
+    font-size: medium;
+}
+
+.wc:hover {
+    opacity: 100%;
+    color: black;
+
+
+}
+
+li:hover .dropdown-menu {
+    display: block;
+    color: black;
+
+}
+
+.dropdown-menu {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    text-align: center;
+}
+
+.content-marg {
+    margin: 40px;
+}
+
+.row-width {
+    width: 50%;
+}
+
+
+.homepageb {
+    background-image: url("../static/resources/nasa-Q1p7bh3SHj8-unsplash.jpg");
+    background-size: cover;
+    /* <------ */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+.aboutpageb {
+
+    background-image: url("../static/resources/international-space-station-1176518_1920.jpg");
+    background-size: cover;
+    /* <------ */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+}
+
+
+.hp_title {
+    color: white;
+    font-weight: bold;
+    font-size: 200px;
+    text-align: center;
+    vertical-align: middle;
+    horizontal-align: middle;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+
+
+
+}
+
+.about_title {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    vertical-align: middle;
+    horizontal-align: middle;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 80px;
+
+
+}
+
+.about_b {
+
+    padding: auto;
+    margin: auto;
+    height: 100vh;
+    text-align: center;
+}
+
+.bold-te {
+    font-size: 100px;
+
+}
+
+.hp_block {
+    margin: 50px;
+    background-color: white;
+    height: 500px;
+
+}
+
+.cent-text {
+    text-align: center;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 90px;
+
+}
+
+.dark-b {
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.text-white {
+    color: white;
+}
+
+.navb-it:hover {
+    background-color: white;
+    color: black;
+}
+
+.hp-bt {
+    background-color: black;
+}
+
+.hp-des {
+    color: white;
+}
+
+#grid {
+    display: grid;
+    align-content: center;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    width: 100vw;
+    height: 65vh;
+    color: white;
+
+
+
+}
+
+.hackathon {
+
+    background-image: url("../static/resources/oscar-nord-MuJHwDHbXUk-unsplash.jpg");
+    background-size: cover;
+    /* <------ */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: auto;
+    height: 65vh;
+
+
+
+}
+
+.book {
+    background-image: url("../static/resources/patrick-tomasso-Oaqk7qqNh_c-unsplash.jpg");
+    background-size: cover;
+    /* <------ */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: auto;
+    height: 100%;
+
+
+}
+
+.coding {
+    background-image: url("../static/resources/VQyrPPyh-FGdV2BJtlcwDphesnxERD6SLWvGtARygLDVNSsXhFF0kzG_yXvLyiARZbKIG3VYF_CIbF4_B-Wy3Eu7kKhHKKR3pq_2ob2pdZgxt_Wz_uqXjRMrhIBKREQnJo--Ui9b.jpeg");
+    background-size: cover;
+    /* <------ */
+    background-repeat: no-repeat;
+    background-position: center;
+    width: auto;
+    height: 100%;
+
+}
+
+#grid>div {
+    padding: 20px;
+    font-size: 4vw;
+}
+
+.black-b {
+    background-color: black;
+}
+
+.content-pad {
+    vertical-align: center;
+    align-self: center;
+}
+
+.transp-b {
+    background-color: none;
+}
+
+
+.big-t {
+    padding: auto;
+    vertical-align: center;
+    margin: auto;
+    font-size: calc(0.3em + 15vmin);
+
+    align-self: center;
+}
+
+.hp-block {
+    background-color: black;
+    background-color: rgba(0, 0, 0, 0.7);
+    padding-bottom: 5vh;
+}
+
+.hp-smallt {
+    font-size: 7vh;
+    color: white;
+    text-align: center;
+    padding-bottom: 3vh
+}
+
+.hp-xsmallt {
+    font-size: 3vh;
+    color: white;
+    text-align: center;
+    padding-left: 7vw;
+    padding-right: 7vw;
+}
+
+.block-half {
+    height: 34vh;
+    align-content: center;
+    padding-top: 50px;
+    white-space: nowrap;
+
+}
+
+.nav-bb {
+    color: white;
+
+}
