@@ -64,6 +64,23 @@ p {
 
 }
 
+.parent{
+    width: 100%;
+}
+.img-div {
+    object-fit: cover;
+    width: 100%;
+    height: 50vh;
+
+}
+
+.img-div-body{
+    object-fit: cover;
+    width: 100%;
+    height: 30vh;
+
+}
+
 .navbar-nav>a {
     color: black;
 }
@@ -225,6 +242,10 @@ p {
 #post-header.page-header h1 {
     color: #FFF;
 }
+.tag-title{
+    text-transform: uppercase;
+    color: black;
+}
 
 .page-header .post-meta {
     margin: 15px 0px;
@@ -239,6 +260,34 @@ p {
     margin: 15px 0px;
 }
 
+.post.post-row .post-img {
+    width: 40%;
+    float: left;
+}
+.aside-widget {
+    margin-bottom: 40px;
+}
+
+.rlpadding{
+    padding-left: 40px;
+    padding-right: 40px;
+}
+.post.post-widget:after {
+    content: '';
+    display: block;
+    clear: both;
+}
+.post.post-widget .post-img {
+    width: 90px;
+    float: left;
+    margin-right: 15px;
+}
+.post.post-widget .post-img img {
+    width: 100%;
+}
+.post.post-widget .post-title {
+    font-size: 18px;
+}
 .page-header .page-header-breadcrumb li {
     display: inline-block;
 }

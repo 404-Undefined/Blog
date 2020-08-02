@@ -3,7 +3,7 @@
 {% block content %}
 	<form method="POST" action=""> <!-- empty action means it will post back to the same route -->
 		{{ form.hidden_tag() }} <!-- Adds a CSRF (Cross Site Request Forgery) token -->
-		<fieldset class="form-group">
+		<fieldset class="form-group rlpadding">
 			<legend class="border-bottom mb-4"> Join Today</legend>
 			<div class="form-group row-width">
 				{{ form.username.label(class="form-control-label") }}
@@ -71,7 +71,7 @@
 		</div>
 	</form>
 
-	<div class="border-top pt-3">
+	<div class="border-top pt-3 rlpadding">
 		<small class="text-muted">
 			Already Have An Account? <a class="ml-2" href="{{url_for('users.login') }}"> Sign In </a> <!-- name of the function not route -->
 		</small>

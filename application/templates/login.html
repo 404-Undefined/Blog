@@ -1,9 +1,7 @@
-{% extends "base.html" %}
-
 {% block content %}
 	<form method="POST" action=""> <!-- empty action means it will post back to the same route -->
 		{{ form.hidden_tag() }} <!-- Adds a CSRF (Cross Site Request Forgery) token -->
-		<fieldset class="form-group content-marg">
+		<fieldset class="form-group rlpadding">
 			<legend class="border-bottom mb-4"> Login </legend>
 
 			<div class="form-group row-width">
@@ -43,7 +41,7 @@
 
 		</fieldset>
 
-		<div class="form-group content-marg">
+		<div class="form-group rlpadding">
 			{{ form.submit(class="btn btn-outline-info") }}
 			<small class="text-muted ml-2">
 				<a href="{{url_for('users.reset_request')}}">Forgot password?</a>
@@ -52,7 +50,7 @@
 
 	</form>
 
-	<div class="border-top pt-3 content-marg">
+	<div class="border-top pt-3 rlpadding">
 		<small class="text-muted">
 			Need An Account? <a class="ml-2" href="{{url_for('users.register') }}"> Register today </a> <!-- name of the function not route -->
 		</small>

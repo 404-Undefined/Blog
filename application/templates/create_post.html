@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-	<div class="content-selection content-marg">
+	<div class="content-selection rlpadding">
 		<form method="POST" action="" enctype="multipart/form-data"> <!-- empty action means it will post back to the same route -->
 			{{ form.hidden_tag() }} <!-- Adds a CSRF (Cross Site Request Forgery) token -->
 			<fieldset class="form-group">
