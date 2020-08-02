@@ -34,8 +34,10 @@ def new_post():
 
 		post = Post(title=form.title.data, content=content, author=current_user, draft=int(form.draft.data), thumbnail=thumbnail_filename)
 
-		for tag in form.tags.data:
-			tag = Tag.query.filter_by(name=tag).first()
+		for tag_name in form.tags.data:
+			tag = Tag.query.filter_by(name=tag_name).first()
+			if tag_name == "Daily Digest": #clear all other tags with daily digest tag
+				tag.posts = []
 			tag.posts.append(post)
 
 		db.session.add(post)
