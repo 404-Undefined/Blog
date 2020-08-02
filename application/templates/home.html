@@ -2,13 +2,13 @@
 
 {% block content %}
 <!-- container -->
-<div class="container home-m">
+<div class="home-m">
     <!-- row -->
     <div class="row">
         {% if featured_posts %}
             {% for post in featured_posts %}
                 <div class="col-md-6">
-                    <div class="post">
+                    <div class="post" data-aos="flip-left">
                         <div class="parent">
                             <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"><img class="img-div"
                                     src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
@@ -22,8 +22,8 @@
                                 {% endfor %}
                                 <span class="post-date"> {{ post.date_posted.strftime("%B %d, %Y") }} </span>
 
-                                <span class="h-author"><a
-                                        href="{{url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a></span>
+                                <span><a
+                                        href="{{url_for('users.user_posts', username=post.author.username)}}" class="h-author">{{ post.author.username }}</a></span>
                             </div>
                             <h3 class="post-title" id="post-t"><a
                                     href="{{url_for('posts.post', post_id=post.id)}}">{{ post.title }}</a></h3>
@@ -34,49 +34,18 @@
         {% endif %}
     </div>
 
-    <div class="row">
-        <div class="col-md-12">
-            <div class="section-title">
-                <h2>Recent Posts</h2>
-            </div>
-        </div>
-        {% for post in posts.items %}
-            <div class="col-md-4">
-                <div class="post">
-                    <div class="parent">
-                        <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"><img class="img-div-body"
-                                src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
-                                alt="post thumbnail"></a>
-                    </div>
-                    <div class="post-body">
-                        <div class="post-meta">
-                            {% for tag in post.tags %}
-                            <a class="post-category" style="background-color: {{tag.colour}};"
-                                href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"> {{tag.name}}</a>
-                            {% endfor %}
-                            <span class="post-date"> {{ post.date_posted.strftime("%B %d, %Y") }} </span>
-
-                            <span class="h-author"><a
-                                    href="{{url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a></span>
-                        </div>
-                        <h3 class="post-title" id="post-t"><a
-                                href="{{url_for('posts.post', post_id=post.id)}}">{{ post.title }}</a></h3>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
-    </div>
+    
 
     <div class="row">
         <div class="col-md-12">
             <div class="section-title">
-                <h2>Author's pick</h2>
+                <h2>Daily Digest</h2>
             </div>
             <div class="row">
                 <!-- author pick - just one -->
                 {% if author_pick %}
                     <div class="col-md-12">
-                        <div class="post">
+                        <div class="post" data-aos="flip-left">
                             <div class="parent">
                                 <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"><img
                                         class="img-div-body"
@@ -104,7 +73,7 @@
                 {% endif %}
 
                 <!-- another tag maybe like Popular -->
-                {% for post in posts.items %}
+                <!-- {% for post in posts.items %}
                     <div class="col-md-4">
                         <div class="post">
                             <div class="parent">
@@ -130,9 +99,41 @@
                             </div>
                         </div>
                     </div>
-                {% endfor %}
+                {% endfor %} -->
             </div>
         </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="section-title">
+                <h2>Recent Posts</h2>
+            </div>
+        </div>
+        {% for post in posts.items %}
+            <div class="col-md-4">
+                <div class="post" data-aos="flip-left">
+                    <div class="parent">
+                        <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"><img class="img-div-body"
+                                src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
+                                alt="post thumbnail"></a>
+                    </div>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            {% for tag in post.tags %}
+                            <a class="post-category" style="background-color: {{tag.colour}};"
+                                href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"> {{tag.name}}</a>
+                            {% endfor %}
+                            <span class="post-date"> {{ post.date_posted.strftime("%B %d, %Y") }} </span>
+
+                            <span><a
+                                    href="{{url_for('users.user_posts', username=post.author.username)}}" class="h-author">{{ post.author.username }}</a></span>
+                        </div>
+                        <h3 class="post-title" id="post-t"><a
+                                href="{{url_for('posts.post', post_id=post.id)}}">{{ post.title }}</a></h3>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock content %}

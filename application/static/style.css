@@ -18,6 +18,12 @@ h6 {
     color: #212631;
     margin: 0px 0px 15px;
 }
+#site-t{
+    color: black;
+    font-family: 'Bungee', cursive;
+    
+}
+
 
 h1 {
     font-size: 34px;
@@ -37,27 +43,31 @@ h4 {
 
 a {
     font-weight: 600;
-    color: #212631;
+    color: #37818d
+    text-decoration: none;
+}
+.site-ti:hover{
     text-decoration: none;
 }
 
-a:hover,
-a:focus {
+/* a:focus {
     color: #212631;
-    text-decoration: underline;
     outline: none;
-}
+} */
 
 p {
     margin: 0px 0px 20px;
 }
 
+
+
 .home-m {
-    padding: 1%;
+    padding-top: 2%;
+    padding-left: 5%;
+    padding-right: 5%;
 }
 
 .nav-b {
-    background-color: white;
     box-shadow: none;
     box-shadow: none !important;
     width: 100%;
@@ -73,6 +83,9 @@ p {
     height: 50vh;
 
 }
+.section-row {
+    margin-bottom:40px;
+}
 
 .img-div-body{
     object-fit: cover;
@@ -82,7 +95,8 @@ p {
 }
 
 .navbar-nav>a {
-    color: black;
+    
+    color: white;
 }
 
 .center-text {
@@ -94,6 +108,14 @@ p {
 
 .post-title a{
     color: black;
+}
+
+.post-title a:hover{
+    color: #37818d;
+    text-decoration: none;
+}
+.cyan-b{
+    background-color: #37818d;
 }
 .ud-pad {
     padding: 10px;
@@ -141,6 +163,44 @@ p {
 .navbar li a {
     color: black;
 }
+.post-author .media .media-left {
+    padding-right: 40px;
+}
+.post-author .media .media-left .media-object {
+    width:120px;
+    border-radius: 50%;
+}
+.media-object{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    display: block;
+    border-radius: 50%;
+}
+.post-author .author-social {
+    margin-top:15px;
+}
+.post-author .author-social li {
+    display: inline-block;
+    margin-right: 5px;
+}
+.post-author .author-social li > a {
+    display: block;
+    width: 30px;
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    background-color: #a7b3c6;
+    color: #FFF;
+    border-radius: 2px;
+    -webkit-transition: 0.2s opacity;
+    transition: 0.2s opacity;
+}
+.post-author .author-social li > a:hover, .post-author .author-social li > a:focus {
+    color: #FFF;
+    opacity: 0.9;
+}
 
 /*=========================================================
    HEADER
@@ -184,6 +244,16 @@ p {
 
 }
 
+.author-t:hover{
+    color: #37818d;
+    text-decoration: none;
+
+}
+
+.nav-it{
+    font-weight: 600;
+}
+
 .page-header {
     position: relative;
     margin: 0;
@@ -219,6 +289,14 @@ p {
 
 }
 
+.nav-co{
+    background-color: #37818d;
+    color: white;
+    
+}
+.nav-link {
+    color: white !important;
+    }
 .page-header .background-img:after {
     content: '';
     position: absolute;
@@ -230,6 +308,20 @@ p {
     background-image: linear-gradient(to top, rgba(33, 38, 49, 0.3) 0%, transparent 100%);
 }
 
+
+.background-img :after {
+    content:'';
+    position:absolute;
+    left:0px;
+    top:0px;
+    width:100%;
+    height:100%;
+    background: rgba(0, 0, 0, 1);
+  }
+
+.author-text{
+    line-height: 2em;
+}
 #post-header.page-header {
     padding-top: 120px;
 }
@@ -329,6 +421,7 @@ p {
 .post .post-img:hover,
 .post .post-img:focus {
     opacity: 0.9;
+    
 }
 
 .post .post-img>img {
@@ -378,6 +471,7 @@ p {
 .h-author{
     padding-left: 10px;
     font-size: 13px;
+    color: #37818d
 }
 
 .post-meta .post-date {
@@ -539,6 +633,10 @@ p {
 }
 
 
+.site-title{
+    color: black !important;
+}
+
 /*
 # Main Menu
 --------------------------------*/
@@ -556,3 +654,4 @@ p {
         padding: 0 20px;
     }
 }
+

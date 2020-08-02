@@ -1,55 +1,32 @@
 {% extends "base.html" %}
 {% block content %}
-<div class="aboutpageb">
 
 
-<div class="about_b">
+<div id="post-header" class="page-header">
+	<div class="background-img">
+		<img class="background-img" id="thumbnail" src="../static/resources/coding-1853305_1920.jpg">
+	</div>
 
-
-  <h1 class="about_title cent-text"> Who we are </h1>
-
-
-
+	<div class="container">
+		<div class="row">
+			<div class="col-md-10">
+				
+				<h1 class="big-t">About Us</h1>
+			</div>
+		</div>
+	</div>
 </div>
-  
 
-<div class="row dark-b">
-  
-    <div class="col-sm-6 cent-text" data-aos="fade-right">
-    <img class="rounded-circle account-img content-marg" src="../static/profile_pics/default.jpg">
-      <div class="text-white">
-        <h2>Soya Shinkura</h2>
-        <div class="content-marg">
-        	<h5>Nagoya International School</h5>
-        	<h5>Backend Developer</h5>
-        	<h5>Mathlete</h5>
-          <h5>Python, Java, Javascript</h5>
 
-    	</div>
-      </div>
-    </div>
 
-    <div class="col-sm-6 cent-text" data-aos="fade-left">
-    <img class="rounded-circle account-img content-marg" src="../static/profile_pics/default.jpg">
-     <div class="text-white">
-        <h2>Steven Oh</h2>
-        <div class="content-marg">
-        	<h5>Nagoya International School</h5>
-        	<h5>Frontend Developer</h5>
-          <h5>Java, Javascript, Arduino, NodeMcu</h5>
-        </div>
-      </div>
-    </div>
 
- </div>
-
-</div>
 
 {% endblock content %}
 {% block javascript %}
+
+
 <script>
   AOS.init();
 </script>
 
 {% endblock javascript%}
-

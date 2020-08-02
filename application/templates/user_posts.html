@@ -1,44 +1,71 @@
 {% extends "base.html" %}
-
 {% block content %}
-	<h1 class="mb-3 rlpadding">Posts by {{user.username}} ({{posts.total}})</h1>
 
-	{% for post in posts.items %}
-        <div class="col-md-4">
-            <div class="post">
-                <div class="parent">
-                    <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"><img class="img-div-body"
-                            src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
-                            alt="post thumbnail"></a>
-                </div>
-                <div class="post-body">
-                    <div class="post-meta">
-                        {% for tag in post.tags %}
-                        <a class="post-category" style="background-color: {{tag.colour}};"
-                            href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"> {{tag.name}}</a>
-                        {% endfor %}
-                        <span class="post-date"> {{ post.date_posted.strftime("%B %d, %Y") }} </span>
 
-                        <span class="h-author"><a
-                                href="{{url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a></span>
-                    </div>
-                    <h3 class="post-title" id="post-t"><a
-                            href="{{url_for('posts.post', post_id=post.id)}}">{{ post.title }}</a></h3>
+    <div id="post-header" class="page-header">
+        <div class="background-img">
+            <img class="background-img" id="thumbnail" src="../static/resources/programming-1873854_1920.png">
+        </div>
+    
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10">
+                    
+                    <h1 class="big-t">{{user.username}}</h1>
                 </div>
             </div>
         </div>
-        {% endfor %}
+
+    </div>
+   
+    
+    
+    <div class="container home-m">
+        <!-- row -->
+        <div class="row">
+            {% for post in posts.items %}
+            <div class="col-md-4">
+                <div class="post">
+                    <div class="parent">
+                        <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"><img class="img-div-body"
+                                src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
+                                alt="post thumbnail"></a>
+                    </div>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            {% for tag in post.tags %}
+                            <a class="post-category" style="background-color: {{tag.colour}};"
+                                href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"> {{tag.name}}</a>
+                            {% endfor %}
+                            <span class="post-date"> {{ post.date_posted.strftime("%B %d, %Y") }} </span>
+    
+                            <span class="h-author"><a
+                                    href="{{url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a></span>
+                        </div>
+                        <h3 class="post-title" id="post-t"><a
+                                href="{{url_for('posts.post', post_id=post.id)}}">{{ post.title }}</a></h3>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+        
+        
 
 	{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %} <!-- right_current includes current page -->
 		{% if page_num %}
-			<!-- In the pagination, the current page will be filled in. Others will just have an outline-->
-			{% if posts.page == page_num %}
-				<a class="btn btn-info mb-4" href="{{url_for('users.user_posts', username=user.username, page=page_num)}}">{{page_num}}</a>
-			{% else %}
-				<a class="btn btn-outline-info mb-4" href="{{url_for('users.user_posts', username=user.username, page=page_num)}}">{{page_num}}</a>
-			{% endif %}
+            <!-- In the pagination, the current page will be filled in. Others will just have an outline-->
+            <div class="center-text">
+                {% if posts.page == page_num %}
+                    <a class="btn btn-info mb-4" href="{{url_for('users.user_posts', username=user.username, page=page_num)}}">{{page_num}}</a>
+                {% else %}
+                    <a class="btn btn-outline-info mb-4" href="{{url_for('users.user_posts', username=user.username, page=page_num)}}">{{page_num}}</a>
+                {% endif %}
+            </div>
 		{% else %} <!-- page_num = None -->
 			...
 		{% endif %}
-	{% endfor %} 
+    {% endfor %} 
+    
 {% endblock content %} <!-- the name of the block "content" in endblock is optonal -->
