@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
-	<form method="POST" action="""> <!-- empty action means it will post back to the same route -->
+	<form method="POST" action=""> <!-- empty action means it will post back to the same route -->
 		{{ form.hidden_tag() }} <!-- Adds a CSRF (Cross Site Request Forgery) token -->
 		<fieldset class="form-group rlpadding">
 			<legend class="border-bottom mb-4"> Login </legend>

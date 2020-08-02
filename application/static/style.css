@@ -4,7 +4,6 @@ body {
     font-weight: 300;
     color: #3d455c;
     overflow-x: hidden;
-
 }
 
 h1,
@@ -18,12 +17,11 @@ h6 {
     color: #212631;
     margin: 0px 0px 15px;
 }
+
 #site-t{
     color: black;
     font-family: 'Bungee', cursive;
-    
 }
-
 
 h1 {
     font-size: 34px;
@@ -46,6 +44,7 @@ a {
     color: #37818d
     text-decoration: none;
 }
+
 .site-ti:hover{
     text-decoration: none;
 }
@@ -59,8 +58,6 @@ p {
     margin: 0px 0px 20px;
 }
 
-
-
 .home-m {
     padding-top: 2%;
     padding-left: 5%;
@@ -71,7 +68,6 @@ p {
     box-shadow: none;
     box-shadow: none !important;
     width: 100%;
-
 }
 
 .parent{
@@ -81,7 +77,6 @@ p {
     object-fit: cover;
     width: 100%;
     height: 50vh;
-
 }
 .section-row {
     margin-bottom:40px;
@@ -91,11 +86,9 @@ p {
     object-fit: cover;
     width: 100%;
     height: 30vh;
-
 }
 
 .navbar-nav>a {
-    
     color: white;
 }
 
@@ -105,7 +98,6 @@ p {
     text-align: center;
 }
 
-
 .post-title a{
     color: black;
 }
@@ -114,9 +106,11 @@ p {
     color: #37818d;
     text-decoration: none;
 }
+
 .cyan-b{
     background-color: #37818d;
 }
+
 .ud-pad {
     padding: 10px;
 }
@@ -133,7 +127,6 @@ p {
 .nav-puzzle {
     border-bottom: 2px solid red;
     color: black;
-
 }
 
 .nav-coding {
@@ -150,14 +143,11 @@ p {
     padding-left: 10px;
     padding-right: 10px;
     color: black;
-
-
 }
 
 .inner-nav {
     padding-left: 50px;
     padding-right: 50px;
-
 }
 
 .navbar li a {
@@ -172,7 +162,6 @@ p {
 }
 .media-object{
     width: 100%;
-    height: 100%;
     margin: 0;
     padding: 0;
     display: block;
@@ -210,8 +199,6 @@ p {
 .homepage-thumb {
     height: 20vh;
     display: block;
-
-
 }
 
 .big-t {
@@ -232,7 +219,6 @@ p {
     padding-top: 5vh;
     padding-left: 18vw;
     padding-right: 18vw;
-
 }
 
 .profile-img {
@@ -241,13 +227,11 @@ p {
 
 .author-t {
     color: black;
-
 }
 
 .author-t:hover{
     color: #37818d;
     text-decoration: none;
-
 }
 
 .nav-it{
@@ -286,17 +270,17 @@ p {
     background-position: center;
     background-size: cover;
     /* remove extra space below image */
-
 }
 
 .nav-co{
     background-color: #37818d;
     color: white;
-    
 }
+
 .nav-link {
     color: white !important;
-    }
+}
+
 .page-header .background-img:after {
     content: '';
     position: absolute;
@@ -307,7 +291,6 @@ p {
     background-image: -webkit-gradient(linear, left bottom, left top, from(rgba(33, 38, 49, 0.3)), to(transparent));
     background-image: linear-gradient(to top, rgba(33, 38, 49, 0.3) 0%, transparent 100%);
 }
-
 
 .background-img :after {
     content:'';
@@ -322,6 +305,7 @@ p {
 .author-text{
     line-height: 2em;
 }
+
 #post-header.page-header {
     padding-top: 120px;
 }
@@ -342,7 +326,6 @@ p {
 .page-header .post-meta {
     margin: 15px 0px;
 }
-
 
 .page-header .post-meta .post-date {
     color: #eceef2;
@@ -421,7 +404,6 @@ p {
 .post .post-img:hover,
 .post .post-img:focus {
     opacity: 0.9;
-    
 }
 
 .post .post-img>img {
@@ -482,6 +464,7 @@ p {
 #post-t{
     color: black;
 }
+
 .post .post-title {
     font-size: 23px;
     margin-bottom: 0px;
@@ -518,7 +501,6 @@ p {
     right: 0;
     bottom: 0;
     top: 0;
-
 }
 
 .post.post-thumb .post-body {
@@ -535,12 +517,10 @@ p {
     font-size: 22px;
 }
 
-
 .post.post-thumb .post-title>a {
     color: black;
     margin-left: 30px;
     margin-top: 30px;
-
 }
 
 /*=========================================================
@@ -554,7 +534,6 @@ p {
     .nav-puzzle {
         border-bottom: none;
         color: black;
-
     }
 
     .nav-coding {
@@ -615,23 +594,17 @@ p {
     text-transform: uppercase;
 }
 
-
 @media screen and (min-width: 676px) {
     .site-title {
         font-size: 112px;
     }
-
-
 }
 
 @media screen and (min-width: 576px) {
     .site-title {
         font-size: 112px;
     }
-
-
 }
-
 
 .site-title{
     color: black !important;
@@ -640,8 +613,6 @@ p {
 /*
 # Main Menu
 --------------------------------*/
-
-
 @media screen and (min-width: 768px) {
     .site-header {
         margin-top: 12px;
@@ -654,4 +625,3 @@ p {
         padding: 0 20px;
     }
 }
-

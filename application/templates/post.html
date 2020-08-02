@@ -1,8 +1,6 @@
 {% extends "base.html" %}
 
 {% block content %}
-
-
 <div id="post-header" class="page-header">
 	<div class="background-img">
 		<img class="background-img" id="thumbnail" src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}">
@@ -22,10 +20,8 @@
 	</div>
 </div>
 
-
-
 <div class="text-post">
-	<h4 class="article-content aa-c">{{ post.content|safe }}</h4>
+	<p class="article-content aa-c">{{ post.content|safe }}</p>
 
 	<div class="section-row" style="padding:40px;">
 		<div class="post-author">
@@ -37,7 +33,11 @@
 					<div class="media-heading">
 						<a class="mr-2 author-t" href="{{url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a>
 					</div>
-					<p class="author-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+					{% if post.author.bio %}
+						<p class="author-text">{{post.author.bio}}</p>
+					{% else %}
+						<p class="author-text"> This author is mysterious! </p>
+					{% endif %}
 					<!-- <ul class="author-social">
 						<li><a href="#"><i class="fa fa-facebook"></i></a></li>
 						<li><a href="#"><i class="fa fa-twitter"></i></a></li>
@@ -50,8 +50,6 @@
 	</div>
 </div>
 
-
-	
 <!-- Modal https://getbootstrap.com/docs/4.0/components/modal/ -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
