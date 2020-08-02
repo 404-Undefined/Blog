@@ -42,7 +42,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="site-branding flex flex-column center-text">
-                            <h1 class="site-title"><strong>The Undefined Blog</strong></h1>
+                            <h1 class="site-title"> <a href="{{url_for('main.home')}}"> <strong>The Undefined Blog</strong> </a> </h1>
                             <p class="site-description center-text">Personal Blog</p>
                         </div><!-- .site-branding -->
     
@@ -68,17 +68,20 @@
                                             <a class="nav-link nav-bot-b" href="{{url_for('main.about')}}">About</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link nav-coding" href="#">Coding</a>
+                                            <a class="nav-link nav-coding" href="{{url_for('posts.tag_posts', tag_name='Coding', page=1)}}">Coding</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link nav-hardware" href="#">Hardware</a>
+                                            <a class="nav-link nav-hardware" href="{{url_for('posts.tag_posts', tag_name='Hardware', page=1)}}">Hardware</a>
                                         </li>
                                         <li class="nav-item dropdown">
                                             <a class="nav-link dropdown-toggle nav-puzzle" id="navbarDropdown">Puzzle</a>
                                             <div class="dropdown-menu mt-0" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="#">Xiangqi</a>
-                                                <a class="dropdown-item" href="#">Chess</a>
+                                                <a class="dropdown-item" href="{{url_for('posts.tag_posts', tag_name='Xiangqi', page=1)}}">Xiangqi</a>
+                                                <a class="dropdown-item" href="{{url_for('posts.tag_posts', tag_name='Chess', page=1)}}">Chess</a>
                                             </div>
+                                        </li>
+                                        <li class="nav-item">
+                                            <a class="nav-link nav-coding" href="{{url_for('posts.tag_posts', tag_name='Maths', page=1)}}">Maths</a>
                                         </li>
                                     </ul>
                                     <ul class="navbar-nav ml-auto">

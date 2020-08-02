@@ -11,9 +11,9 @@ def save_thumbnail(post_thumbnail):
 	picture_filename = random_hex + file_extension
 	picture_path = os.path.join(current_app.root_path, f"static/thumbnails", picture_filename)
 
-	OUTPUT_SIZE = (200, 150)
+	#OUTPUT_SIZE = (200, 150)
 	resized_image = Image.open(post_thumbnail)
-	resized_image.thumbnail(OUTPUT_SIZE)
+	#resized_image.thumbnail(OUTPUT_SIZE)
 
 	resized_image.save(picture_path)
 
