@@ -108,11 +108,54 @@
             </div>
         {% endfor %}
     </div>
+
 </div>
+
+<div class="bg-modal">
+	<div class="modal-contents">
+
+		<div class="close">+</div>
+
+		<form action="">
+            <h2 class="modal-title">Join Our Mailing List</h2>
+			<input class="iinput" type="text" placeholder="Name" id="modal-name">
+			<input class="iinput" type="email" placeholder="E-Mail" id="modal-email">
+			<button type="button" class="btn btn-light sub-b" id="modal-button">Join</button>
+		</form>
+
+	</div>
+</div>
+
 {% endblock content %}
 
 {% block javascript %}
     <script>
         AOS.init();
+        
+        document.querySelector('.close').addEventListener("click", function () {
+            document.querySelector('.bg-modal').style.display = "none";
+        });
+
+        document.getElementById('modal-button').addEventListener("click", function () {
+                if (document.getElementById("modal-email").value != "" && document.getElementById("modal-name").value != "") {
+                    document.querySelector(".bg-modal").style.display = "none";
+                }
+            });
+
+    var timeOut = setTimeout(function () {
+
+        document.querySelector('.bg-modal').style.display = "flex";
+
+    }, 4000);
+
+    document.getElementById("modal-email").value.post("/postmethod", {
+        email_data: data
+    });
+    document.getElementById("modal-name").value.post("/postmethod", {
+        name_data: data
+    });
+
+
+    
     </script>
 {% endblock javascript%}
