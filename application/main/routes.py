@@ -1,5 +1,9 @@
-from flask import Blueprint, render_template, flash, request
-from application.models import Post, Tag
+from flask import Blueprint, render_template, flash, request, abort, redirect, url_for
+from application.models import Post, Tag, SubscribedUser
+from application.main.utils import send_confirmation_email, send_everyone_email
+from flask_login import current_user, login_required
+from application.database import db
+from application.main.forms import SubscriptionEmailForm
 
 main = Blueprint("main", __name__)
 
@@ -29,5 +33,26 @@ def email_confirm():
 	email_data = request.form["email"]
 	name_data = request.form["name"]
 
-	print(email_data)
-	return "<h1>" + email_data + "</h1>"
+	user = SubscribedUser(name=name_data, email=email_data)
+	db.session.add(user)
+	db.session.commit()
+	send_confirmation_email(name=name_data, email=email_data)
+	return ""
+
+@main.route("/send_subscribers_email", methods=["GET", "POST"])
+@login_required
+def send_subscribers_email():
+	if current_user.role != "Admin":
+		abort(403)
+
+	form = SubscriptionEmailForm()
+	if form.validate_on_submit():
+		all_users = SubscribedUser.query.all()
+
+		subject = form.subject.data
+		recipients = [user.email for user in all_users]
+		content = form.content.data
+
+		send_everyone_email(subject=subject, content=content, recipients=recipients)
+		return redirect(url_for("main.home"))
+	return render_template("send_subscribers_email.html", form=form)

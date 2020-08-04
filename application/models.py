@@ -60,6 +60,11 @@ class Tag(db.Model):
 	name = db.Column(db.String(30), unique=True, nullable=False)
 	colour = db.Column(db.String(30), default="black")
 
+class SubscribedUser(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	name = db.Column(db.String(20))
+	email = db.Column(db.String(120), unique=True, nullable=False)
+
 class MyModelView(ModelView):
 	def is_accessible(self):
 		return current_user.role == "Admin"
