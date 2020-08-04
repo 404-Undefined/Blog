@@ -133,36 +133,25 @@
         AOS.init();
 
         var timeOut = setTimeout(function () {
-
-                document.querySelector('.bg-modal').style.display = 'flex';
-
-            }, 4000);
-
+            document.querySelector('.bg-modal').style.display = 'flex';
+        }, 4000);
         
         document.querySelector('.close').addEventListener('click', function () {
             document.querySelector('.bg-modal').style.display = 'none';
         });
 
         document.getElementById('modal-button').addEventListener('click', function () {
-
-            $name = $('#modal-email').val();
-            $email = $('#modal-name').val();
-            
             if ($name!= '' && $email!= '') {
-                var contact = {
-                    'name': $name,
-                    'email': $email
-                }
                 $.ajax({
-                    url: "{{ url_for('main.contact') }}",//the python function
-                    type: 'POST',
-                    data: JSON.stringify(contact),   // converts js value to JSON string
+                    url: "{{ url_for('main.email_confirm')}}",
+                    type: "POST",
+                    data: {
+                        name: $('#modal-name').val(),
+                        email: $('#modal-email').val()
+                    }
                 })
-                    .done(function (result) {     // on success get the return object from server
-                        console.log(result)     // do whatever with it. In this case see it in console
-                    })
                 document.querySelector('.bg-modal').style.display = 'none';
-                }
-            });
+            }
+        });
     </script>
-{% endblock javascript%}
+{% endblock javascript %}
