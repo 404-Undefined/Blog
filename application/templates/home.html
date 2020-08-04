@@ -154,7 +154,7 @@
                     'email': $email
                 }
                 $.ajax({
-                    url: "{{ url_for('main.contact') }}",
+                    url: "{{ url_for('main.contact') }}",//the python function
                     type: 'POST',
                     data: JSON.stringify(contact),   // converts js value to JSON string
                 })
