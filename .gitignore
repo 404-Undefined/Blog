@@ -15,3 +15,7 @@ build/
 .env
 
 .DS_Store
+site.db
+thumbnails/
+profile_pics/
+!.default.jpg
