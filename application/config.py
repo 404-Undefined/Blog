@@ -8,8 +8,7 @@ class Config:
 	SECRET_KEY = os.getenv("SECRET_KEY")
 	SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
-	SQLALCHEMY_DATABASE_URI = "sqlite:///site.db"
-	SECRET_KEY = "07042cf406df6e1cf5fa3554da062604"
+
 	
 
 	MAIL_SERVER = "smtp.googlemail.com"
