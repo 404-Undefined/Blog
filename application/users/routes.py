@@ -22,7 +22,6 @@ def register():
 		db.session.add(user)
 		db.session.commit()
 
-		os.mkdir(f"application/static/users/{form.username.data}") #Create folder for this user
 		flash(f"Account created for {form.username.data}!", "success") #bootstrap class category: success, danger, etc
 		return redirect(url_for("users.login"))
 	return render_template("register.html", title="Register", form=form)

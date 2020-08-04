@@ -14,6 +14,9 @@ posts = Blueprint("posts", __name__)
 @posts.route("/post/new", methods=["GET", "POST"])
 @login_required
 def new_post():
+	if current_user.role != "Admin":
+		abort(403)
+
 	form = PostForm()
 	form.tags.choices = [(tag.name, tag.name) for tag in Tag.query.all()]
 	if form.validate_on_submit():
