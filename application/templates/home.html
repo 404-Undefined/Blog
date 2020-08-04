@@ -1,157 +1,214 @@
-{% extends "base.html" %}
-
-{% block content %}
+{% extends "base.html" %} {% block content %}
 <!-- container -->
 <div class="home-m">
-    <!-- row -->
-    <div class="row">
-        {% if featured_posts %}
-            {% for post in featured_posts %}
-                <div class="col-md-6">
-                    <div class="post" data-aos="flip-left">
-                        <div class="parent">
-                            <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"><img class="img-div"
-                                    src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
-                                    alt="post thumbnail"></a>
-                        </div>
-                        <div class="post-body">
-                            <div class="post-meta">
-                                {% for tag in post.tags %}
-                                    <a class="post-category" style="background-color: {{tag.colour}};"
-                                        href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"> {{tag.name}}</a>
-                                {% endfor %}
-                                <span class="post-date"> {{ post.date_posted.strftime("%B %d, %Y") }} </span>
-
-                                <span><a
-                                        href="{{url_for('users.user_posts', username=post.author.username)}}" class="h-author">{{ post.author.username }}</a></span>
-                            </div>
-                            <h3 class="post-title" id="post-t"><a
-                                    href="{{url_for('posts.post', post_id=post.id)}}">{{ post.title }}</a></h3>
-                        </div>
-                    </div>
-                </div>
+  <!-- row -->
+  <div class="row">
+    {% if featured_posts %} {% for post in featured_posts %}
+    <div class="col-md-6">
+      <div class="post" data-aos="fade-up">
+        <div class="parent">
+          <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"
+            ><img
+              class="img-div"
+              src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
+              alt="post thumbnail"
+          /></a>
+        </div>
+        <div class="post-body">
+          <div class="post-meta">
+            {% for tag in post.tags %}
+            <a
+              class="post-category"
+              style="background-color: {{tag.colour}};"
+              href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"
+            >
+              {{tag.name}}</a
+            >
             {% endfor %}
+            <span class="post-date">
+              {{ post.date_posted.strftime("%B %d, %Y") }}
+            </span>
+
+            <span
+              ><a
+                href="{{url_for('users.user_posts', username=post.author.username)}}"
+                class="h-author"
+                >{{ post.author.username }}</a
+              ></span
+            >
+          </div>
+          <h3 class="post-title" id="post-t">
+            <a href="{{url_for('posts.post', post_id=post.id)}}"
+              >{{ post.title }}</a
+            >
+          </h3>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% endif %}
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <div class="section-title">
+        <h2>Daily Digest</h2>
+      </div>
+      <div class="row">
+        {% if daily_digest %}
+        <div class="col-md-12">
+          <div class="post" data-aos="fade-up">
+            <div class="parent">
+              <a
+                class="post-img"
+                href="{{url_for('posts.post', post_id=daily_digest.id)}}"
+                ><img
+                  class="img-div-body"
+                  src="{{url_for('static', filename='thumbnails/' + daily_digest.thumbnail)}}"
+                  alt="post thumbnail"
+              /></a>
+            </div>
+
+            <div class="post-body">
+              <div class="post-meta">
+                {% for tag in daily_digest.tags %}
+                <!-- don't add link for daily digest tag -->
+                {% if tag.name == "Daily Digest" %}
+                <span
+                  class="post-category"
+                  style="background-color: {{tag.colour}};"
+                >
+                  {{tag.name}}</span
+                >
+                {% else %}
+                <a
+                  class="post-category"
+                  style="background-color: {{tag.colour}};"
+                  href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"
+                >
+                  {{tag.name}}</a
+                >
+                {% endif %} {% endfor %}
+                <span class="post-date">
+                  {{ daily_digest.date_posted.strftime("%B %d, %Y") }}
+                </span>
+
+                <span class="h-author"
+                  ><a
+                    href="{{url_for('users.user_posts', username=daily_digest.author.username)}}"
+                    >{{ daily_digest.author.username }}</a
+                  ></span
+                >
+              </div>
+              <h3 class="post-title" id="post-t">
+                <a href="{{url_for('posts.post', post_id=daily_digest.id)}}"
+                  >{{ daily_digest.title }}</a
+                >
+              </h3>
+            </div>
+          </div>
+        </div>
         {% endif %}
+      </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-12">
-            <div class="section-title">
-                <h2>Daily Digest</h2>
-            </div>
-            <div class="row">
-                {% if daily_digest %}
-                    <div class="col-md-12">
-                        <div class="post" data-aos="flip-left">
-                            <div class="parent">
-                                <a class="post-img" href="{{url_for('posts.post', post_id=daily_digest.id)}}"><img
-                                        class="img-div-body"
-                                        src="{{url_for('static', filename='thumbnails/' + daily_digest.thumbnail)}}"
-                                        alt="post thumbnail"></a>
-                            </div>
-
-                            <div class="post-body">
-                                <div class="post-meta">
-                                    {% for tag in daily_digest.tags %}
-                                        <!-- don't add link for daily digest tag -->
-                                        {% if tag.name == "Daily Digest" %}
-                                        <span class="post-category" style="background-color: {{tag.colour}};"> {{tag.name}}</span>
-                                        {% else %}
-                                        <a class="post-category" style="background-color: {{tag.colour}};"
-                                            href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}">
-                                            {{tag.name}}</a>
-                                        {% endif %}
-                                    {% endfor %}
-                                    <span class="post-date"> {{ daily_digest.date_posted.strftime("%B %d, %Y") }} </span>
-
-                                    <span class="h-author"><a
-                                            href="{{url_for('users.user_posts', username=daily_digest.author.username)}}">{{ daily_digest.author.username }}</a></span>
-                                </div>
-                                <h3 class="post-title" id="post-t"><a
-                                        href="{{url_for('posts.post', post_id=daily_digest.id)}}">{{ daily_digest.title }}</a></h3>
-                            </div>
-                        </div>
-                    </div>
-                {% endif %}
-            </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <div class="section-title">
+        <h2>Recent Posts</h2>
+      </div>
+    </div>
+    {% for post in posts.items %}
+    <div class="col-md-4">
+      <div class="post" data-aos="fade-up">
+        <div class="parent">
+          <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"
+            ><img
+              class="img-div-body"
+              src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
+              alt="post thumbnail"
+          /></a>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-12">
-            <div class="section-title">
-                <h2>Recent Posts</h2>
-            </div>
+        <div class="post-body">
+          <div class="post-meta">
+            {% for tag in post.tags %}
+            <a
+              class="post-category"
+              style="background-color: {{tag.colour}};"
+              href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"
+            >
+              {{tag.name}}</a
+            >
+            {% endfor %}
+            <span class="post-date">
+              {{ post.date_posted.strftime("%B %d, %Y") }}
+            </span>
+
+            <span
+              ><a
+                href="{{url_for('users.user_posts', username=post.author.username)}}"
+                class="h-author"
+                >{{ post.author.username }}</a
+              ></span
+            >
+          </div>
+          <h3 class="post-title" id="post-t">
+            <a href="{{url_for('posts.post', post_id=post.id)}}"
+              >{{ post.title }}</a
+            >
+          </h3>
         </div>
-        {% for post in posts.items %}
-            <div class="col-md-4">
-                <div class="post" data-aos="flip-left">
-                    <div class="parent">
-                        <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"><img class="img-div-body"
-                                src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
-                                alt="post thumbnail"></a>
-                    </div>
-                    <div class="post-body">
-                        <div class="post-meta">
-                            {% for tag in post.tags %}
-                            <a class="post-category" style="background-color: {{tag.colour}};"
-                                href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"> {{tag.name}}</a>
-                            {% endfor %}
-                            <span class="post-date"> {{ post.date_posted.strftime("%B %d, %Y") }} </span>
-
-                            <span><a
-                                    href="{{url_for('users.user_posts', username=post.author.username)}}" class="h-author">{{ post.author.username }}</a></span>
-                        </div>
-                        <h3 class="post-title" id="post-t"><a
-                                href="{{url_for('posts.post', post_id=post.id)}}">{{ post.title }}</a></h3>
-                    </div>
-                </div>
-            </div>
-        {% endfor %}
+      </div>
     </div>
-
+    {% endfor %}
+  </div>
 </div>
 
 <div class="bg-modal">
-	<div class="modal-contents">
+  <div class="modal-contents">
+    <div class="close">+</div>
 
-		<div class="close">+</div>
-
-		<form action="">
-            <h2 class="modal-title">Join Our Mailing List</h2>
-			<input class="iinput" type="text" placeholder="Name" id="modal-name">
-			<input class="iinput" type="email" placeholder="E-Mail" id="modal-email">
-			<button type="button" class="btn btn-light sub-b" id="modal-button">Join</button>
-		</form>
-
-	</div>
+    <form action="">
+      <h2 class="modal-title">Join Our Mailing List</h2>
+      <input class="iinput" type="text" placeholder="Name" id="modal-name" />
+      <input
+        class="iinput"
+        type="email"
+        placeholder="E-Mail"
+        id="modal-email"
+      />
+      <button type="button" class="btn btn-light sub-b" id="modal-button">
+        Join
+      </button>
+    </form>
+  </div>
 </div>
 
-{% endblock content %}
+{% endblock content %} {% block javascript %}
+<script>
+  AOS.init();
 
-{% block javascript %}
-    <script>
-        AOS.init();
+  var timeOut = setTimeout(function () {
+    document.querySelector(".bg-modal").style.display = "flex";
+  }, 4000);
 
-        var timeOut = setTimeout(function () {
-            document.querySelector('.bg-modal').style.display = 'flex';
-        }, 4000);
-        
-        document.querySelector('.close').addEventListener('click', function () {
-            document.querySelector('.bg-modal').style.display = 'none';
+  document.querySelector(".close").addEventListener("click", function () {
+    document.querySelector(".bg-modal").style.display = "none";
+  });
+
+  document
+    .getElementById("modal-button")
+    .addEventListener("click", function () {
+      if ($("#modal-name").val() != "" && $("#modal-name").val() != "") {
+        $.ajax({
+          url: "{{ url_for('main.email_confirm')}}",
+          type: "POST",
+          data: {
+            name: $("#modal-name").val(),
+            email: $("#modal-email").val(),
+          },
         });
-
-        document.getElementById('modal-button').addEventListener('click', function () {
-            if ($name!= '' && $email!= '') {
-                $.ajax({
-                    url: "{{ url_for('main.email_confirm')}}",
-                    type: "POST",
-                    data: {
-                        name: $('#modal-name').val(),
-                        email: $('#modal-email').val()
-                    }
-                })
-                document.querySelector('.bg-modal').style.display = 'none';
-            }
-        });
-    </script>
+        document.querySelector(".bg-modal").style.display = "none";
+      }
+    });
+</script>
 {% endblock javascript %}
