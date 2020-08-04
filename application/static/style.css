@@ -22,6 +22,7 @@ h6 {
 #site-t {
   color: black;
   font-family: "Bungee", cursive;
+  font-size: 8vw;
 }
 
 h1 {
@@ -588,13 +589,12 @@ p {
   }
 }
 
-@media only screen and (max-width: 500px) {
+@media only screen and (max-width: 780px) {
   #post-content {
     font-size: 19px;
   }
 
   .media-left{
-    padding-right: 0!important;
     margin-left: auto;
     margin-right: auto;
     width: 50%;
@@ -602,13 +602,13 @@ p {
 
   
   .text-post {
-    padding-top: 5vh;
+    padding-top: 3vh;
     padding-left: 8vw;
     padding-right: 8vw;
   }
 
   .author-bio{
-    font-size: 13px;
+    display: none;
   }
   .page-header h1 {
     font-size: 28px;
