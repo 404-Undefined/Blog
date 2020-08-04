@@ -23,3 +23,11 @@ def home():
 @main.route('/about')
 def about():
     return render_template("about.html", title="About")
+
+@main.route("/email_confirm", methods=['POST'])
+def email_confirm():
+	email_data = request.form["email"]
+	name_data = request.form["name"]
+
+	print(email_data)
+	return "<h1>" + email_data + "</h1>"
