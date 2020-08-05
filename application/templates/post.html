@@ -134,5 +134,40 @@ function randomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1) + min);
 }
 
+var moves = [];
+function showGame(){
+	var i = 0;
+	const config = {
+		position: 'start',
+		showNotation: true,
+	};
+	const board = Xiangqiboard('myBoard', config);
+	var positions = new Array(moves.length-1);
+	$('#previous').on('click', function () {
+		if(i>=0){
+			console.log(i);
+			i--;
+			board.position(positions[i]);
+		}
+	});
+	$('#next').on('click', function () {
+		// alert(nextItem());
+		if(i < moves.length){
+			positions[i] = board.fen();
+			board.move(moves[i+1]);
+			console.log(i);
+			i++;
+		}
+	});
+	$('#startPositionBtn').on('click', board.start);
+	
+}
+	
+
+
+	
+	
+
+
 </script>
 {% endblock javascript %}

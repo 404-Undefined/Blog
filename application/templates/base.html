@@ -1,195 +1,316 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}"> <!-- custom stylesheet -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+    <!-- custom stylesheet -->
     <!-- Font Awesome -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    />
     <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
     <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Material Design Bootstrap -->
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.8.2/css/all.css"
+    />
     <!-- Google Fonts -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap"
+    />
     <!-- Bootstrap core CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
     <!-- Material Design Bootstrap -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
-    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap" rel="stylesheet">
-    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Bungee&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@600&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bungee&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+
     {% if title %}
-        <title> {{title}}</title>
+    <title>{{title}}</title>
     {% else %}
-        <title> Undefined </title>
+    <title>Undefined</title>
     {% endif %}
-</head>
+  </head>
 
-<body>
+  <body>
     <div class="outer-container">
-        <header class="site-header">
-                <div class="row">
-                    <div class="col-12">
-                        <div class="site-branding flex flex-column center-text">
-                            <h1 class="site-title"> <a href="{{url_for('main.home')}}" class="site-ti" id="site-t"> <strong>The Undefined Blog</strong> </a> </h1>
-                            <p class="site-description center-text">Personal Blog</p>
-                        </div><!-- .site-branding -->
-                            <nav class="navbar navbar-expand-lg navbar-light nav-co nav-b navbar-nav">
-                                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                                    <span class="navbar-toggler-icon"></span>
-                                </button>
-                                <div class="collapse navbar-collapse inner-nav" id="navbarNav">
-                                    <ul class="navbar-nav">
-                                        
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{url_for('posts.tag_posts', tag_name='Coding', page=1)}}">Coding</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{url_for('posts.tag_posts', tag_name='Hardware', page=1)}}">Hardware</a>
-                                        </li>
-                                      
-                                        <li class="nav-item dropdown">
-                                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="buttosn" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                              Puzzle
-                                            </a>
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                              <a class="dropdown-item nav-it" href="{{url_for('posts.tag_posts', tag_name='Xiangqi', page=1)}}">Xiangqi</a>
-                                              <a class="dropdown-item nav-it" href="{{url_for('posts.tag_posts', tag_name='Chess', page=1)}}">Chess</a>
-                                              
-                                            </div>
-                                          </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link" href="{{url_for('posts.tag_posts', tag_name='Maths', page=1)}}">Maths</a>
-                                        </li>
-                                    </ul>
-                                    <ul class="navbar-nav ml-auto">
-                                        {% if current_user.is_authenticated %}
-                                        {% if current_user.role == "Admin" %}
-                                            <li class="nav-item">
-                                                <a class="nav-link wc" href="{{url_for('main.send_subscribers_email')}}">Send Subcribers Email</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link wc" href="{{url_for('posts.new_post')}}">New Post</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link wc" href="{{url_for('users.user_drafts', username=current_user.username)}}">My Drafts</a>
-                                            </li>
-                                            <li class="nav-item">
-                                                <a class="nav-link wc" href="{{url_for('users.user_posts', username=current_user.username)}}">My Posts</a>
-                                            </li>
-                                        {% endif %}
-                                        <li class="nav-item">
-                                            <a class="nav-link wc" href="{{url_for('users.account')}}">Account</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link wc" href="{{url_for('users.logout')}}">Logout</a>
-                                        </li>
-                                        {% else %}
-                                        <li class="nav-item">
-                                            <a class="nav-link wc" href="{{url_for('users.login')}}">Log in</a>
-                                        </li>
-                                        <li class="nav-item">
-                                            <a class="nav-link wc" href="{{url_for('users.register')}}">Register</a>
-                                        </li>
-                                        {% endif %}
-                                    </ul>
-                                </div>
-                            </nav>
-                    </div><!-- .col -->
-            </div><!-- .container -->
-        </header><!-- .site-header -->
-        </div>
-    
-    <!-- Display flash messages -->
-    {% with messages = get_flashed_messages(with_categories=true) %}
-        {% if messages %}
-          {% for category, message in messages %}
-            <div class="alert alert-{{category}}">
-              {{message}}
+      <header class="site-header">
+        <div class="row">
+          <div class="col-12">
+            <div class="site-branding flex flex-column center-text">
+              <h1 class="site-title">
+                <a href="{{url_for('main.home')}}" class="site-ti" id="site-t">
+                  <strong>The Undefined Blog</strong>
+                </a>
+              </h1>
+              <p class="site-description center-text">Personal Blog</p>
             </div>
-          {% endfor %}
-        {% endif %}
-    {% endwith %}
+            <!-- .site-branding -->
+            <nav
+              class="navbar navbar-expand-lg navbar-light nav-co nav-b navbar-nav"
+            >
+              <button
+                class="navbar-toggler"
+                type="button"
+                data-toggle="collapse"
+                data-target="#navbarNav"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse inner-nav" id="navbarNav">
+                <ul class="navbar-nav">
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      href="{{url_for('posts.tag_posts', tag_name='Coding', page=1)}}"
+                      >Coding</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      href="{{url_for('posts.tag_posts', tag_name='Hardware', page=1)}}"
+                      >Hardware</a
+                    >
+                  </li>
 
-    {% block content %}{% endblock %}
-    <!-- Footer -->
-<footer class="page-footer font-small cyan darken-3">
-
-    <!-- Footer Elements -->
-    <div class="container">
-  
-      <!-- Grid row-->
-      <div class="row">
-  
-        <!-- Grid column -->
-        <div class="col-md-12 py-5">
-          <div class="mb-5 flex-center">
-  
-            <!-- Facebook -->
-            <a class="fb-ic">
-              <i class="fab fa-facebook-f fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-            </a>
-            <!-- Twitter -->
-            <a class="tw-ic">
-              <i class="fab fa-twitter fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-            </a>
-            <!-- Google +-->
-            <a class="gplus-ic">
-              <i class="fab fa-google-plus-g fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-            </a>
-            <!--Linkedin -->
-            <a class="li-ic">
-              <i class="fab fa-linkedin-in fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-            </a>
-            <!--Instagram-->
-            <a class="ins-ic">
-              <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x"> </i>
-            </a>
-            <!--Pinterest-->
-            <a class="pin-ic">
-              <i class="fab fa-pinterest fa-lg white-text fa-2x"> </i>
-            </a>
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      id="navbarDropdown"
+                      role="buttosn"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Puzzle
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                      <a
+                        class="dropdown-item nav-it"
+                        href="{{url_for('posts.tag_posts', tag_name='Xiangqi', page=1)}}"
+                        >Xiangqi</a
+                      >
+                      <a
+                        class="dropdown-item nav-it"
+                        href="{{url_for('posts.tag_posts', tag_name='Chess', page=1)}}"
+                        >Chess</a
+                      >
+                    </div>
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link"
+                      href="{{url_for('posts.tag_posts', tag_name='Maths', page=1)}}"
+                      >Maths</a
+                    >
+                  </li>
+                </ul>
+                <ul class="navbar-nav ml-auto">
+                  {% if current_user.is_authenticated %} {% if current_user.role
+                  == "Admin" %}
+                  <li class="nav-item">
+                    <a
+                      class="nav-link wc"
+                      href="{{url_for('main.send_subscribers_email')}}"
+                      >Send Subcribers Email</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link wc" href="{{url_for('posts.new_post')}}"
+                      >New Post</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link wc"
+                      href="{{url_for('users.user_drafts', username=current_user.username)}}"
+                      >My Drafts</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a
+                      class="nav-link wc"
+                      href="{{url_for('users.user_posts', username=current_user.username)}}"
+                      >My Posts</a
+                    >
+                  </li>
+                  {% endif %}
+                  <li class="nav-item">
+                    <a class="nav-link wc" href="{{url_for('users.account')}}"
+                      >Account</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link wc" href="{{url_for('users.logout')}}"
+                      >Logout</a
+                    >
+                  </li>
+                  {% else %}
+                  <li class="nav-item">
+                    <a class="nav-link wc" href="{{url_for('users.login')}}"
+                      >Log in</a
+                    >
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link wc" href="{{url_for('users.register')}}"
+                      >Register</a
+                    >
+                  </li>
+                  {% endif %}
+                </ul>
+              </div>
+            </nav>
           </div>
+          <!-- .col -->
         </div>
-        <!-- Grid column -->
-  
+        <!-- .container -->
+      </header>
+      <!-- .site-header -->
+    </div>
+
+    <!-- Display flash messages -->
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %} {% for category, message in messages %}
+    <div class="alert alert-{{category}}">
+      {{message}}
+    </div>
+    {% endfor %} {% endif %} {% endwith %} {% block content %}{% endblock %}
+    <!-- Footer -->
+    <footer class="page-footer font-small cyan darken-3">
+      <!-- Footer Elements -->
+      <div class="container">
+        <!-- Grid row-->
+        <div class="row">
+          <!-- Grid column -->
+          <div class="col-md-12 py-5">
+            <div class="mb-5 flex-center">
+              <!-- Twitter -->
+              <a class="tw-ic" href="https://github.com/404-Undefined">
+                <i class="fab fa-github fa-lg white-text mr-md-5 mr-3 fa-2x">
+                </i>
+              </a>
+              <a class="tw-ic">
+                <i class="fab fa-snapchat fa-lg white-text mr-md-5 mr-3 fa-2x">
+                </i>
+              </a>
+
+              <!--Instagram-->
+              <a class="ins-ic">
+                <i class="fab fa-instagram fa-lg white-text mr-md-5 mr-3 fa-2x">
+                </i>
+              </a>
+
+              <a class="ins-ic" href = "mailto: 404undefined.ss@gmail.com">
+                <i class="fas fa-envelope fa-lg white-text mr-md-5 mr-3 fa-2x">
+                </i>
+              </a>
+            </div>
+          </div>
+          <!-- Grid column -->
+        </div>
+        <!-- Grid row-->
       </div>
-      <!-- Grid row-->
-  
-    </div>
-    <!-- Footer Elements -->
-  
-    <!-- Copyright -->
-    <div class="footer-copyright text-center py-3">© 2020 Copyright:
-      <a href="https://mdbootstrap.com/"> MDBootstrap.com</a>
-    </div>
-    <!-- Copyright -->
-  
-  </footer>
+      <!-- Footer Elements -->
+
+      <!-- Copyright -->
+      <div class="footer-copyright text-center py-3">
+        © 2020 Copyright:
+        <a href="https://mdbootstrap.com/"> Undefined Blog</a>
+      </div>
+      <!-- Copyright -->
+    </footer>
     <!-- Footer -->
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.5.1.min.js"
+      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-    
-    {% block javascript %} {% endblock %}
-</body>
+    <script src="../static/xq-js/xiangqiboard-0.3.3.js"></script>
 
+    {% block javascript %} {% endblock %}
+  </body>
 </html>
