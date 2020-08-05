@@ -154,7 +154,7 @@ function showGame(){
 		// alert(nextItem());
 		if(i < moves.length){
 			positions[i] = board.fen();
-			board.move(moves[i+1]);
+			board.move(moves[i]);
 			console.log(i);
 			i++;
 		}
