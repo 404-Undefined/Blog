@@ -14,7 +14,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}"/>
     <!-- custom stylesheet -->
     <!-- Font Awesome -->
     <link
@@ -91,6 +91,16 @@
     {% else %}
     <title>Undefined</title>
     {% endif %}
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174643760-1"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-174643760-1');
+    </script>
   </head>
 
   <body>
@@ -306,11 +316,10 @@
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
-    <script src="../static/js/xiangqiboard-0.3.3.js"></script>
-    <script src="../static/js/likeButton.js"></script>
-    <script src="../static/js/modal.js"></script>
-    <script src="../static/JWPgnChess2/JWPgnConfig.js"></script>
-    <!-- change this to python directory -->
+    <script src="{{url_for('static', filename='js/xiangqiboard-0.3.3.js')}}"> </script>
+    <script src="{{url_for('static', filename='js/modal.js')}}"> </script>
+    <script src="{{url_for('static', filename='js/likeButton.js')}}"> </script>
+    <script src="{{url_for('static', filename='JWPgnChess2/JWPgnConfig.js')}}"> </script>
     {% block javascript %} {% endblock %}
   </body>
 </html>
