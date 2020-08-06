@@ -6,6 +6,12 @@ from flask_login import UserMixin, current_user
 from flask import current_app
 from flask_admin.contrib.sqla import ModelView
 
+class Like(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
+	post_id = db.Column(db.Integer, db.ForeignKey('post.id'))
+	timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)
+
 @login_manager.user_loader
 def load_user(user_id):
 	return User.query.get(int(user_id))
@@ -20,6 +26,7 @@ class User(db.Model, UserMixin):
 	bio = db.Column(db.String(200))
 	gender = db.Column(db.String(20))
 	role = db.Column(db.String(10), default="Member")
+	liked_posts = db.relationship('Like', backref=db.backref('user'), lazy="dynamic")
 
 	def get_reset_token(self, expires_seconds=1800):
 		serializer_obj = Serializer(current_app.config["SECRET_KEY"], expires_seconds)
@@ -34,10 +41,23 @@ class User(db.Model, UserMixin):
 			return None
 		return User.query.get(user_id)
 
+	def like_post(self, post):
+		if not self.has_liked_post(post): #if the user has not already liked this post yet,
+			like = Like(user_id=self.id, post_id=post.id)
+			db.session.add(like)
+			db.session.commit()
+
+	def unlike_post(self, post):
+		if self.has_liked_post(post): #if the user has already liked the post,
+			Like.query.filter_by(user_id=self.id, post_id=post.id).delete()
+
+	def has_liked_post(self, post):
+		return Like.query.filter(Like.user_id == self.id, Like.post_id == post.id).count() > 0
+
 	def __repr__(self):
 		return f"User({self.username}, {self.email}, {self.gender}, {self.bio}, {self.image_file})"
 
-association_table = db.Table('association',
+tag_table = db.Table('tag_association',
     db.Column('id', db.Integer, db.ForeignKey('post.id')),
     db.Column('tag_id', db.Integer, db.ForeignKey('tag.tag_id'))
 )
@@ -48,12 +68,13 @@ class Post(db.Model):
 	date_posted = db.Column(db.DateTime, nullable=False, default=datetime.utcnow)
 	content = db.Column(db.Text, nullable=False)
 	draft = db.Column(db.Integer)
-	tags = db.relationship("Tag", secondary=association_table, backref=db.backref('posts', lazy='dynamic'), lazy='dynamic') #Tag.posts
+	tags = db.relationship("Tag", secondary=tag_table, backref=db.backref('posts', lazy='dynamic'), lazy='dynamic') #Tag.posts
 	user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False) #user.id = primary_key of User
 	thumbnail = db.Column(db.String(32), default="default.jpg")
+	likes = db.relationship("Like", backref=db.backref('post'), lazy="dynamic") #Post.liked_users
 
 	def __repr__(self):
-		return f"User({self.title}, {self.date_posted} Draft: {self.draft} {self.content})"
+		return f"Post({self.title}, {self.date_posted} Draft: {self.draft} {self.content})"
 
 class Tag(db.Model):
 	tag_id = db.Column(db.Integer, primary_key=True)
@@ -72,3 +93,4 @@ class MyModelView(ModelView):
 admin.add_view(MyModelView(User, db.session))
 admin.add_view(MyModelView(Post, db.session))
 admin.add_view(MyModelView(Tag, db.session))
+admin.add_view(MyModelView(Like, db.session))

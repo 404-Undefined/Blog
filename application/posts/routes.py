@@ -113,3 +113,15 @@ def tag_posts(tag_name):
 		abort(404)
 	posts = tag.posts.order_by(Post.date_posted.desc()).paginate(per_page=5) #use the backref to access all posts with the tag
 	return render_template("tag_posts.html", tag=tag, title=tag.name, posts=posts)
+
+@posts.route('/post/<int:post_id>/<string:action>')
+@login_required
+def like_action(post_id, action):
+	post = Post.query.get_or_404(post_id)
+	if action == 'like':
+		current_user.like_post(post)
+		db.session.commit()
+	elif action == 'unlike':
+		current_user.unlike_post(post)
+		db.session.commit()
+	return redirect(url_for('posts.post', post_id=post_id))
