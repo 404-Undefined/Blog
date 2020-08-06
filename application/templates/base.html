@@ -7,6 +7,10 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
+    <meta
+      name="google-site-verification"
+      content="Mx7YCGH8Sl3RGvUNmGxdPT4SoVWgjW95DzGadIGq-28"
+    />
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -14,7 +18,11 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}"/>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="{{url_for('static', filename='css/style.css')}}"
+    />
     <!-- custom stylesheet -->
     <!-- Font Awesome -->
     <link
@@ -93,13 +101,18 @@
     {% endif %}
 
     <!-- Global site tag (gtag.js) - Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-174643760-1"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=UA-174643760-1"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
 
-      gtag('config', 'UA-174643760-1');
+      gtag("config", "UA-174643760-1");
     </script>
   </head>
 
@@ -316,10 +329,10 @@
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
 
-    <script src="{{url_for('static', filename='js/xiangqiboard-0.3.3.js')}}"> </script>
-    <script src="{{url_for('static', filename='js/modal.js')}}"> </script>
-    <script src="{{url_for('static', filename='js/likeButton.js')}}"> </script>
-    <script src="{{url_for('static', filename='JWPgnChess2/JWPgnConfig.js')}}"> </script>
+    <script src="{{url_for('static', filename='js/xiangqiboard-0.3.3.js')}}"></script>
+    <script src="{{url_for('static', filename='js/modal.js')}}"></script>
+    <script src="{{url_for('static', filename='js/likeButton.js')}}"></script>
+    <script src="{{url_for('static', filename='JWPgnChess2/JWPgnConfig.js')}}"></script>
     {% block javascript %} {% endblock %}
   </body>
 </html>
