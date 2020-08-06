@@ -14,11 +14,7 @@
       integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
       crossorigin="anonymous"
     />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="{{ url_for('static', filename='style.css') }}"
-    />
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css" />
     <!-- custom stylesheet -->
     <!-- Font Awesome -->
     <link
@@ -270,7 +266,7 @@
                 </i>
               </a>
 
-              <a class="ins-ic" href = "mailto: 404undefined.ss@gmail.com">
+              <a class="ins-ic" href="mailto: 404undefined.ss@gmail.com">
                 <i class="fas fa-envelope fa-lg white-text mr-md-5 mr-3 fa-2x">
                 </i>
               </a>
@@ -309,7 +305,11 @@
     ></script>
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-    <script src="../static/xq-js/xiangqiboard-0.3.3.js"></script>
+
+    <script src="../static/js/xiangqiboard-0.3.3.js"></script>
+    <script src="../static/js/likeButton.js"></script>
+    <script src="../static/js/modal.js"></script>
+    <!-- change this to python directory -->
 
     {% block javascript %} {% endblock %}
   </body>
