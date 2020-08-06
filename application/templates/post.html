@@ -13,21 +13,22 @@
 					{% for tag in post.tags %}
 						<a class="post-category" style = "background-color: {{tag.colour}};" href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"> {{tag.name}}</a>
 					{% endfor %}</a>
-					{{ post.likes.count() }} likes
+					
 				</div>
 				<h1 class="big-t">{{ post.title }}</h1>
 
 				{% if current_user.is_authenticated %}
 				    {% if current_user.has_liked_post(post) %}
-				    	<a href="{{ url_for('posts.like_action', post_id=post.id, action='unlike') }}"> <i class="fas fa-thumbs-up"></i> </a>
+				    	<a href="{{ url_for('posts.like_action', post_id=post.id, action='unlike') }}"> <i class="fas fa-thumbs-up thumb"></i> </a>
 				    {% else %}
-				    	<a href="{{ url_for('posts.like_action', post_id=post.id, action='like') }}"> <i class="far fa-thumbs-up"></i> </a>
+				    	<a href="{{ url_for('posts.like_action', post_id=post.id, action='like') }}"> <i class="far fa-thumbs-up thumb"></i> </a>
 				    {% endif %}
 				{% else %}
-					<a href="{{ url_for('posts.like_action', post_id=post.id, action='like') }}"> <i class="far fa-thumbs-up"></i> </a>
-				{% endif %}
-        </a>
-        <span class="like-text" id="like-text">Like</span>
+					<a href="{{ url_for('posts.like_action', post_id=post.id, action='like') }}"> <i class="far fa-thumbs-up thumb"></i> </a>
+        {% endif %}
+        
+        
+        <div class="likeCount">{{ post.likes.count() }} likes</div>
 			</div>
 		</div>
 	</div>
@@ -87,3 +88,9 @@
   </div>
 </div>
 {% endblock content %}
+{% block javascript %}
+<script>
+  new JWPgnChess("myGame");
+</script>
+
+{% endblock javascript %}

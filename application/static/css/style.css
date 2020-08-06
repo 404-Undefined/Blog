@@ -131,7 +131,6 @@ p {
   box-shadow: none !important;
 }
 
-
 .navbar-nav > li {
   padding-left: 10px;
   padding-right: 10px;
@@ -296,7 +295,7 @@ p {
 }
 
 .big-t {
-  font-size: 5vw;
+  font-size: 5em;
   color: white;
 }
 
@@ -392,6 +391,29 @@ p {
 
 .nav-link {
   color: white !important;
+}
+
+.chessBoard {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  margin-left: auto;
+  margin-right: auto;
+  width: auto;
+  height: auto;
+}
+
+.likeCount {
+  position: absolute;
+  color: white;
+  padding-top: 10px;
+}
+
+.thumb {
+  color: white;
+  width: auto;
+  height: auto;
+  font-size: 2em;
+  padding-top: 10px;
 }
 
 .page-header .background-img:after {
@@ -675,7 +697,7 @@ p {
   }
 }
 
-@media only screen and (max-width: 780px) {
+@media only screen and (max-width: 500px) {
   #post-content {
     font-size: 19px;
   }
@@ -686,7 +708,7 @@ p {
     width: 50%;
   }
 
-  .bwf{
+  .bwf {
     background-color: blue;
   }
 
@@ -793,13 +815,13 @@ p {
   background-clip: padding-box;
 }
 
-#like-b{
+#like-b {
   margin-top: 30px;
 }
 
-.like-text{
+.like-text {
   color: white;
-  position: absolute
+  position: absolute;
 }
 
 .iinput {
@@ -848,23 +870,23 @@ p {
 
   /* disable any native browser highlighting */
   -webkit-touch-callout: none;
-    -webkit-user-select: none;
-     -khtml-user-select: none;
-       -moz-user-select: none;
-        -ms-user-select: none;
-            user-select: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
-.highlight1-e13fc, .highlight2-e0a03 {
+.highlight1-e13fc,
+.highlight2-e0a03 {
   box-shadow: inset 0 0 3px 3px yellow;
 }
 
-.xiangqi-board{
+.xiangqi-board {
   padding-top: 20px;
   padding-bottom: 20px;
   margin-left: auto;
   margin-right: auto;
-
 }
 
 .notation-8c7a2 {
@@ -883,4 +905,3 @@ p {
   top: 40%;
   left: 1px;
 }
-
