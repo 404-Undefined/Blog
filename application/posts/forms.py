@@ -9,3 +9,8 @@ class PostForm(FlaskForm):
 	attachments = MultipleFileField("Attached Files")
 	tags = SelectMultipleField("Tags")
 	submit = SubmitField("Post")
+
+class CommentForm(FlaskForm):
+	name = StringField("Name")
+	content = TextAreaField("Content", validators=[DataRequired()])
+	submit = SubmitField("Comment")

@@ -86,11 +86,20 @@ class SubscribedUser(db.Model):
 	name = db.Column(db.String(20))
 	email = db.Column(db.String(120), unique=True, nullable=False)
 
+class Comment(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	post_id = db.Column(db.Integer, db.ForeignKey("post.id"))
+	name = db.Column(db.String(20))
+	content = db.Column(db.Text, nullable=False)
+	timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)	
+
 class MyModelView(ModelView):
 	def is_accessible(self):
-		return current_user.role == "Admin"
+		return current_user.is_authenticated and current_user.role == "Admin"
 
 admin.add_view(MyModelView(User, db.session))
 admin.add_view(MyModelView(Post, db.session))
 admin.add_view(MyModelView(Tag, db.session))
 admin.add_view(MyModelView(Like, db.session))
+admin.add_view(MyModelView(Comment, db.session))
+admin.add_view(MyModelView(SubscribedUser, db.session))

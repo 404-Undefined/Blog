@@ -2,8 +2,8 @@ from flask import (render_template, url_for, flash,
                    redirect, request, abort, Blueprint)
 from flask_login import current_user, login_required
 from application.database import db
-from application.models import Post, Tag
-from application.posts.forms import PostForm
+from application.models import Post, Tag, Comment
+from application.posts.forms import PostForm, CommentForm
 from application.posts.utils import save_thumbnail, save_image
 import markdown2
 import os
@@ -53,7 +53,18 @@ def new_post():
 @posts.route('/post/<int:post_id>', methods=["GET", "POST"])
 def post(post_id):
 	post = Post.query.get_or_404(post_id) #return post with this id; if it doesn't, return 404
-	return render_template("post.html", title=post.title, post=post)
+	comments = Comment.query.filter_by(post_id=post_id).all()
+
+	form = CommentForm()
+	if form.validate_on_submit():
+		if current_user.is_authenticated:
+			comment = Comment(name=current_user.username, content=form.content.data, post_id=post_id)
+		else:
+			comment = Comment(name=form.name.data, content=form.content.data, post_id=post_id)
+		db.session.add(comment)
+		db.session.commit()
+		return redirect(url_for("posts.post", post_id=post.id))
+	return render_template("post.html", title=post.title, post=post, comments=comments, form=form)
 
 @posts.route('/post/<int:post_id>/update', methods=["GET", "POST"])
 @login_required

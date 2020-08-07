@@ -25,12 +25,13 @@
 				    {% endif %}
 				{% else %}
 					<a href="{{ url_for('posts.like_action', post_id=post.id, action='like') }}"> <i class="far fa-thumbs-up thumb"></i> </a>
-        {% endif %}
-        
-        
-        <div class="likeCount">{{ post.likes.count() }} likes</div>
-			</div>
-		</div>
+       			{% endif %}
+       		</div>
+
+			<div class="likeCount">
+				{{ post.likes.count() }} likes
+        	</div>
+        </div>
 	</div>
 </div>
 
@@ -66,6 +67,59 @@
 		</div>
 	</div>
 </div>
+
+<div>
+	{% for comment in comments %}
+		<div>
+			{{comment.name}}
+			{{comment.content|safe}}
+			{{comment.timestamp}}
+		</div>
+	{% endfor %}
+</div>
+
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+		<fieldset>
+			<legend> Leave a Comment </legend>
+
+			{% if current_user.is_authenticated %}
+				<div> Commenting as {{current_user.username}} </div>
+			{% else %}
+			<div>
+				{{ form.name.label }}
+
+				{% if form.name.errors %}
+					{{form.name }}
+					<div class="invalid-feedback">
+						{% for error in form.name.errors %}
+							<span> {{error}} </span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.name }}
+				{% endif %}
+			</div>
+			{% endif %}
+
+			<div>
+				{% if form.content.errors %}
+					{{form.content }}
+					<div class="invalid-feedback">
+						{% for error in form.content.errors %}
+							<span> {{error}} </span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.content }}
+				{% endif %}
+			</div>
+		</fieldset>
+
+		<div>
+			{{ form.submit }}
+		</div>
+	</form>
 
 <!-- Modal https://getbootstrap.com/docs/4.0/components/modal/ -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
