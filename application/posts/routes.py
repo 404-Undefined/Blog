@@ -8,6 +8,8 @@ from application.posts.utils import save_thumbnail, save_image
 import markdown2
 import os
 import secrets
+from datetime import datetime
+from tzlocal import get_localzone
 
 posts = Blueprint("posts", __name__)
 
@@ -58,9 +60,9 @@ def post(post_id):
 	form = CommentForm()
 	if form.validate_on_submit():
 		if current_user.is_authenticated:
-			comment = Comment(name=current_user.username, content=form.content.data, post_id=post_id)
+			comment = Comment(name=current_user.username, content=form.content.data, post_id=post_id, timestamp=datetime.now(get_localzone()))
 		else:
-			comment = Comment(name=form.name.data, content=form.content.data, post_id=post_id)
+			comment = Comment(name=form.name.data, content=form.content.data, post_id=post_id, timestamp=datetime.now(get_localzone()))
 		db.session.add(comment)
 		db.session.commit()
 		return redirect(url_for("posts.post", post_id=post.id))
