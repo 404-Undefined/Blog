@@ -68,8 +68,7 @@ def account():
 		form.email.data = current_user.email
 		form.bio.data = current_user.bio
 		form.gender.data = current_user.gender
-	image_file = url_for("static", filename=f"profile_pics/{current_user.image_file}") #current_user.image_file = db.Column(db.String(20), nullable=False, default="default.jpg")
-	return render_template("account.html", title="Account", image_file=image_file, form=form)
+	return render_template("account.html", title="Account", image_file=current_user.image_file, form=form)
 
 @users.route("/reset_password", methods=["GET", "POST"])
 def reset_request():
