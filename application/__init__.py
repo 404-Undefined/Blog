@@ -5,6 +5,7 @@ from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
 from flask_admin import Admin
+from flask_s3 import FlaskS3
 
 bcrypt = Bcrypt()
 login_manager = LoginManager()
@@ -12,6 +13,7 @@ login_manager.login_view = "users.login" #pass in the function name of the login
 login_manager.login_message_category = "info" #Styles "Please log in to view this page" with Bootstrap "info" class
 admin = Admin()
 mail = Mail()
+s3 = FlaskS3()
 
 def create_app(config_class=Config):
 	app = Flask(__name__)
@@ -22,6 +24,7 @@ def create_app(config_class=Config):
 	login_manager.init_app(app)
 	mail.init_app(app)
 	admin.init_app(app)
+	s3.init_app(app)
 
 	from application.main.routes import main
 	from application.users.routes import users
