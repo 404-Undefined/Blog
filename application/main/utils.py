@@ -17,10 +17,14 @@ def send_confirmation_email(name, email):
 
 def send_everyone_email(subject, recipients, content):
 	msg = Message(
-		"Hi", 
+		subject, 
 		sender=os.getenv("MAIL_USERNAME"), 
 		recipients=recipients,
-		body=content
+		html=content,
 		)
 
+	mail.send(msg)
+
+def send_test_email(subject, content):
+	msg = Message(subject=subject, sender=os.getenv("MAIL_USERNAME"), recipients=[os.getenv("MAIL_USERNAME")], html=content)
 	mail.send(msg)

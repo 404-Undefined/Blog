@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template, flash, request, abort, redirect, url_for
 from application.models import Post, Tag, SubscribedUser
-from application.main.utils import send_confirmation_email, send_everyone_email
+from application.main.utils import send_confirmation_email, send_everyone_email, send_test_email
 from flask_login import current_user, login_required
 from application.database import db
 from application.main.forms import SubscriptionEmailForm
@@ -50,9 +50,12 @@ def send_subscribers_email():
 		all_users = SubscribedUser.query.all()
 
 		subject = form.subject.data
-		recipients = [user.email for user in all_users]
 		content = form.content.data
 
-		send_everyone_email(subject=subject, content=content, recipients=recipients)
+		if form.test.data:
+			send_test_email(subject=subject, content=content)
+		else:
+			recipients = [user.email for user in all_users]
+			send_everyone_email(subject=subject, content=content, recipients=recipients)
 		return redirect(url_for("main.home"))
 	return render_template("send_subscribers_email.html", form=form)
