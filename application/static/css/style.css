@@ -146,6 +146,11 @@ p {
   color: black;
 }
 
+.white-t{
+  padding-top: 10px;
+  color: white;
+}
+
 .media-body {
   top: 50% !important;
   bottom: 50% !important;
@@ -448,6 +453,7 @@ p {
 }
 
 .author-text {
+  margin-bottom: 10px;
   line-height: 1em;
   position: absolute;
 }
@@ -719,7 +725,9 @@ p {
   }
 
   .author-bio {
-    position: relative;
+    padding-right: 100px;
+
+    /* position: relative; */
   }
   .page-header h1 {
     font-size: 28px;
@@ -904,4 +912,53 @@ p {
 .numeric-fe76e {
   top: 40%;
   left: 1px;
+}
+
+
+#content{
+  left: 50%;
+  right: 50%;
+  width: 60vw;
+  height: 20vh;
+  margin: 5px;
+  padding: 5px;
+}
+
+#submit{
+  padding: 5px;
+  color: white;
+  background-color: #37818d;
+}
+
+.button-area{
+  padding: 10px 10px 10px 0px;
+}
+
+.comment-user{
+  padding-left: 10px;
+  columns: #37818d;
+}
+.comment-post{
+  padding-left: 5%;
+}
+
+.panel-body{
+  border-left: 2px solid #37818d;
+
+}
+
+hr {
+  display: block;
+
+    border: 5px inset;
+    overflow: hidden;
+ 
+}
+
+.t-padding{
+  padding-top: 10px;
+}
+
+.comment-area{
+  padding: 10px;
 }
