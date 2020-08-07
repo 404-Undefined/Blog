@@ -1,5 +1,6 @@
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 from datetime import datetime
+from tzlocal import get_localzone
 from application import login_manager, admin
 from application.database import db
 from flask_login import UserMixin, current_user
@@ -91,7 +92,7 @@ class Comment(db.Model):
 	post_id = db.Column(db.Integer, db.ForeignKey("post.id"))
 	name = db.Column(db.String(20))
 	content = db.Column(db.Text, nullable=False)
-	timestamp = db.Column(db.DateTime, index=True, default=datetime.utcnow)	
+	timestamp = db.Column(db.DateTime, index=True, default=datetime.now(get_localzone()))
 
 class MyModelView(ModelView):
 	def is_accessible(self):
