@@ -42,8 +42,15 @@
 					<img class="media-object" src="{{url_for('static', filename='profile_pics/' + post.author.image_file)}}" alt="">
 				</div>
 				<div class="media-body">
+					{% if post.author == current_user %}
+						<div>
+			 				<a class="btn btn-secondary btn-sm mt-1 mb-1" href="{{url_for('posts.update_post', post_id=post.id)}}"> Update </a>
+							<button type="button" class="btn btn-danger btn-sm m-1" data-toggle="modal" data-target="#deleteModal"> Delete </button>
+						</div>
+			 		{% endif %}
 					<div class="media-heading">
 						<a class="mr-2 author-t" href="{{url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a>
+						<small class="text-muted">{{ post.date_posted.strftime("%Y/%m/%d") }}</small>
 					</div>
 
 					<div class="author-bio">

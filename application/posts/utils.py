@@ -18,9 +18,9 @@ def save_thumbnail(post_thumbnail):
 	#resized_image.thumbnail(OUTPUT_SIZE)
 
 	#resized_image.save(picture_path)
-	resized_image.save(img_img, format=resized_image.format)
 
 	img_img = io.BytesIO()
+	resized_image.save(img_img, format=resized_image.format)
 	img_img.seek(0)
 	s3 = boto3.resource("s3")
 	s3.Bucket(current_app.config["FLASKS3_BUCKET_NAME"]).put_object(Key=f"static/thumbnails/{picture_filename}", Body=img_img)
