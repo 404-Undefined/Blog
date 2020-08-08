@@ -952,7 +952,6 @@ hr {
 
     border: 5px inset;
     overflow: hidden;
- 
 }
 
 .t-padding{
@@ -961,4 +960,11 @@ hr {
 
 .comment-area{
   padding: 10px;
+}
+
+#xiangqi-button{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }

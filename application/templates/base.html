@@ -9,10 +9,8 @@
     />
     <meta name="google-site-verification" content="0g9n8OjU2ydGasKPenoAnPZFt_xrPA-6Pd0y78uRfv0" />
     <!-- meta for web -->
-    <meta name="keywords" content="undefined blog, python, javasciprt">
+    <meta name="keywords" content="blog, python, javasciprt">
     <meta name="description" content="Personal Blog by Steven and Soya">
-    <meta name="author" content="Soya Shinkura">
-    <meta name="author" content="Steven Oh">
     <!-- Icon -->
 
     <link rel="icon" href="favicon.ico" type="../static/favicon/favicon.ico">    
@@ -94,6 +92,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
+
 
     {% if title %}
     <title>{{title}}</title>
@@ -312,6 +311,7 @@
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
       crossorigin="anonymous"
     ></script>
+
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
       integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
@@ -324,11 +324,13 @@
     ></script>
     <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
-
-    <script src="{{url_for('static', filename='js/xiangqiboard-0.3.3.js')}}"> </script>
     <script src="{{url_for('static', filename='js/modal.js')}}"> </script>
     <script src="{{url_for('static', filename='js/likeButton.js')}}"> </script>
     <script src="{{url_for('static', filename='JWPgnChess2/JWPgnConfig.js')}}"> </script>
-    {% block javascript %} {% endblock %}
+    <script src="{{url_for('static', filename='js/xiangqiboard-0.3.3.js')}}"> </script>
+    <script src="{{url_for('static', filename='js/xiangqi.js')}}"> </script>
+
+    {% block javascript %} 
+    {% endblock %}
   </body>
 </html>
