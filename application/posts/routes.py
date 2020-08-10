@@ -94,7 +94,7 @@ def update_post(post_id):
 		post.content = markdown2.markdown(content)
 
 		if form.thumbnail.data:
-			post.thumbnail_filename = save_thumbnail(form.thumbnail.data)
+			post.thumbnail = save_thumbnail(form.thumbnail.data)
 
 		for tag in form.tags.data:
 			tag = Tag.query.filter_by(name=tag).first()
