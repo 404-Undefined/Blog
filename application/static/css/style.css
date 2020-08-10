@@ -310,7 +310,7 @@ p {
 }
 
 #post-content {
-  font-size: 1.5em;
+  font-size: 1.2em;
   line-height: 2em;
   font-weight: 300;
 }
@@ -323,6 +323,9 @@ p {
   height: auto;
   padding: 25px 0px 25px 0px;
 }
+#post-content > p{
+  padding: 20px;
+}
 #post-content > p img {
   margin-left: auto;
   margin-right: auto;
@@ -334,8 +337,8 @@ p {
 
 .text-post {
   padding-top: 5vh;
-  padding-left: 16vw;
-  padding-right: 16vw;
+  padding-left: 19vw;
+  padding-right: 19vw;
 }
 
 .profile-img {
