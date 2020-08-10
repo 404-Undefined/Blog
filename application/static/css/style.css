@@ -324,7 +324,7 @@ p {
   padding: 25px 0px 25px 0px;
 }
 #post-content > p{
-  padding: 20px;
+  padding: 10px;
 }
 #post-content > p img {
   margin-left: auto;
@@ -335,11 +335,17 @@ p {
   padding: 25px 0px 25px 0px;
 }
 
-.text-post {
-  padding-top: 5vh;
-  padding-left: 19vw;
-  padding-right: 19vw;
+.d{
+  display: inline-block;
 }
+
+.text-post {
+  padding-top: 2vh;
+  padding-left: 20vw;
+  padding-right: 20vw;
+  padding-bottom: 3vh;
+}
+
 
 .profile-img {
   width: 150px;
@@ -576,7 +582,7 @@ p {
   padding: 3px 10px;
   font-weight: 600;
   border-radius: 2px;
-  margin-right: 15px;
+  margin-right: 8px;
   color: #fff;
   background-color: #212631;
   -webkit-transition: 0.2s opacity;
