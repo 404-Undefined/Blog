@@ -46,6 +46,22 @@ a {
   text-decoration: none;
 }
 
+#content{
+  width: 80%!important;
+  height: 80vh!important;
+}
+
+.content-area{
+  height: 50%!important;
+  width: 100%;
+}
+
+a:hover {
+  font-weight: 600;
+  color: #37818d;
+  text-decoration: underline;
+}
+
 .site-ti:hover {
   text-decoration: none;
 }
