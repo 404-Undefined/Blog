@@ -46,13 +46,11 @@ a {
   text-decoration: none;
 }
 
-.content-area{
-  height: 90vh;
-}
-
 .content-area > textarea{
-  width: 80%!important;
-  height: 80vh!important;
+  min-width: 70vw;
+  min-height: 80vh!important;
+  resize: both;
+  overflow: auto;
 }
 
 a:hover {
