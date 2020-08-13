@@ -25,7 +25,6 @@
 				{% else %}
 					<a href="{{ url_for('posts.like_action', post_id=post.id, action='like') }}"> <i class="far fa-thumbs-up thumb"></i> </a>
        			{% endif %}
-
 			<div class="likeCount">
 				{{ post.likes.count() }} likes
         </div>
