@@ -1017,9 +1017,9 @@ pre.prettyprint, code.prettyprint {
 	border-radius: 8px;
 }
 
-pre.prettyprint {
+pre.prettyprint { 
 	width: 95%;
-	margin: 1em auto;
+	margin: 1em;
 	padding: 1em;
 	white-space: pre-wrap;
 }
