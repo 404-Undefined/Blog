@@ -695,6 +695,10 @@ p {
   margin-left: 30px;
   margin-top: 30px;
 }
+.daily-digest{
+  height: 60hv;
+}
+
 
 /*=========================================================
    RESPONSIVE
@@ -748,15 +752,10 @@ p {
 
   .text-post {
     padding-top: 3vh;
-    padding-left: 8vw;
-    padding-right: 8vw;
+    padding-left: 5vw;
+    padding-right: 5vw;
   }
 
-  .author-bio {
-    padding-right: 100px;
-
-    /* position: relative; */
-  }
   .page-header h1 {
     font-size: 28px;
   }
@@ -1039,4 +1038,18 @@ li.L1,li.L3,li.L5,li.L7,li.L9 { }
   pre .tag, code .tag { color: #006; font-weight: bold; }
   pre .atn, code .atn { color: #404; }
   pre .atv, code .atv { color: #060; }
+}
+
+#inner-allpost{
+  height: 50px;
+  background-color: #37818d!important;
+  display:inline-block;
+  font-size: 20px;
+  width: 300px;
+}
+
+.all-post-b{
+  width: 100%;
+  text-align: center;
+  height: 10vh;
 }
