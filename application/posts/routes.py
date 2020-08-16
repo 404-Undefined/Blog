@@ -79,6 +79,7 @@ def update_post(post_id):
 	form.tags.choices = [(tag.name, tag.name) for tag in Tag.query.all()]
 	if form.validate_on_submit():
 		post.title = form.title.data
+		post.draft = form.draft.data
 
 		content = form.content.data
 		attachments = request.files.getlist(form.attachments.name)
@@ -105,6 +106,7 @@ def update_post(post_id):
 	elif request.method == "GET":
 		form.title.data = post.title
 		form.content.data = post.content
+		form.draft.data = post.draft
 	return render_template("create_post.html", title="Update Post", form=form, legend="Update Post")
 
 @posts.route('/post/<int:post_id>/delete', methods=["POST"]) #you can specfy the type of dynamic parameter - integers.
