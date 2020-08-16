@@ -3,7 +3,8 @@
 <div class="home-m">
   <!-- row -->
   <div class="row">
-    {% if featured_posts %} {% for post in featured_posts %}
+    {% if featured_posts %} 
+    {% for post in featured_posts.items %}
     <div class="col-md-6">
       <div class="post" data-aos="fade-up">
         <div class="parent">
@@ -45,7 +46,8 @@
         </div>
       </div>
     </div>
-    {% endfor %} {% endif %}
+    {% endfor %} 
+    {% endif %}
   </div>
 
   <div class="row">
@@ -183,7 +185,21 @@
   </div>
 </div>
 
-{% endblock content %} {% block javascript %}
+{% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
+  {% if page_num %}
+    {% if posts.page == page_num %}
+      <a class="btn btn-info mb-4" href="{{url_for('main.home', page=page_num)}}">{{page_num}}</a>
+    {% else %}
+      <a class="btn btn-outline-info mb-4" href="{{url_for('main.home', page=page_num)}}">{{page_num}}</a>
+    {% endif %}
+  {% else %}
+    ...
+  {% endif %}
+{% endfor %}
+
+{% endblock content %} 
+
+{% block javascript %}
 <script>
   AOS.init();
 </script>
