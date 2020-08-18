@@ -4,7 +4,7 @@
   <!-- row -->
   <div class="row">
     {% if featured_posts %} 
-    {% for post in featured_posts.items %}
+    {% for post in featured_posts %}
     <div class="col-md-6">
       <div class="post" data-aos="fade-up">
         <div class="parent">
@@ -185,6 +185,7 @@
   </div>
 </div>
 
+<div class="center-text">
 {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=2) %}
   {% if page_num %}
     {% if posts.page == page_num %}
@@ -196,6 +197,7 @@
     ...
   {% endif %}
 {% endfor %}
+</div>
 
 {% endblock content %} 
 
