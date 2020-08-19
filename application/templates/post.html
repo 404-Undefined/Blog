@@ -150,32 +150,34 @@
 			</div>
 			{% for post in recent_posts %}
 			<div class="col-md-4">
-				<div class="parent">
-			<a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"
-				><img
-				class="img-div-body"
-				src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
-				alt="post thumbnail"
-			/></a>
-				</div>
-				<div class="post-body">
-				<div class="post-meta">
-					{% for tag in post.tags %}
-					<a class="post-category"
-					style="background-color: {{tag.colour}};"
-					href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}">{{tag.name}}</a>
-					{% endfor %}
-					<span class="post-date">
-					{{ post.date_posted.strftime("%B %d, %Y") }}
-					</span>
-					<a href="{{url_for('users.user_posts', username=post.author.username)}}"
-						class="h-author">{{ post.author.username }}</a>
-				</div>
-				<h3 class="post-title" id="post-t">
-					<a href="{{url_for('posts.post', post_id=post.id)}}"
-					>{{ post.title }}</a
-					>
-				</h3>
+				<div class="post">
+					<div class="parent">
+						<a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"
+							><img
+							class="img-div-body"
+							src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
+							alt="post thumbnail"
+						/></a>
+					</div>
+					<div class="post-body">
+					<div class="post-meta">
+						{% for tag in post.tags %}
+						<a class="post-category"
+						style="background-color: {{tag.colour}};"
+						href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}">{{tag.name}}</a>
+						{% endfor %}
+						<span class="post-date">
+						{{ post.date_posted.strftime("%B %d, %Y") }}
+						</span>
+						<a href="{{url_for('users.user_posts', username=post.author.username)}}"
+							class="h-author">{{ post.author.username }}</a>
+					</div>
+					<h3 class="post-title" id="post-t">
+						<a href="{{url_for('posts.post', post_id=post.id)}}"
+						>{{ post.title }}</a
+						>
+					</h3>
+					</div>
 				</div>
 			</div>
 			{% endfor %}
