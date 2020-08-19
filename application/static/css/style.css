@@ -89,8 +89,8 @@ p {
 }
 .img-div {
   object-fit: cover;
+  height: 30vh;
   width: 100%;
-  height: 50vh;
 }
 .section-row {
   margin-bottom: 40px;
@@ -262,9 +262,7 @@ p {
 .media {
   padding-top: 30px;
 }
-.post-author .media .media-left {
-  padding-right: 40px;
-}
+
 .post-author .media .media-left .media-object {
   width: 120px;
   border-radius: 50%;
@@ -460,7 +458,7 @@ p {
   );
   background-image: linear-gradient(
     to top,
-    rgba(33, 38, 49, 0.3) 0%,
+    rgba(33, 38, 49, 0.8) 0%,
     transparent 100%
   );
 }
@@ -695,11 +693,14 @@ p {
   margin-left: 30px;
   margin-top: 30px;
 }
-.daily-digest{
-  height: 60hv;
+.home-post{
+  margin: auto;
+  width: 95%;
 }
-
-
+.pagination{
+  width: 80%;
+  margin: 0 auto;
+}
 /*=========================================================
    RESPONSIVE
 ===========================================================*/
@@ -743,9 +744,13 @@ p {
   .media-left {
     margin-left: auto;
     margin-right: auto;
-    width: 50%;
+    width: 40%;
+    padding-right: 5px;
   }
-
+  
+  .home-m {
+    padding-top: 5%;
+  }
   .bwf {
     background-color: blue;
   }
@@ -798,12 +803,6 @@ p {
   text-transform: uppercase;
 }
 
-@media screen and (min-width: 676px) {
-}
-
-@media screen and (min-width: 576px) {
-}
-
 .site-title {
   color: black !important;
 }
@@ -849,6 +848,8 @@ p {
   border-radius: 4px;
   background-clip: padding-box;
 }
+
+
 
 #like-b {
   margin-top: 30px;
