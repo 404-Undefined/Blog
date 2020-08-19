@@ -33,7 +33,7 @@ def new_post():
 					content = content.replace(attachment.filename, saved_image_path)
 				else:
 					flash(f"{attachment.filename}: This file is not supported.", "warning")
-		content = markdown2.markdown(content)
+		# content = markdown2.markdown(content)
 
 		thumbnail_filename = save_thumbnail(form.thumbnail.data) if form.thumbnail.data else "default.jpg"
 
@@ -55,6 +55,7 @@ def new_post():
 @posts.route('/post/<int:post_id>', methods=["GET", "POST"])
 def post(post_id):
 	post = Post.query.get_or_404(post_id) #return post with this id; if it doesn't, return 404
+	recent_posts = Post.query.filter_by(draft=0).order_by(Post.date_posted.desc()).limit(3)
 	comments = Comment.query.filter_by(post_id=post_id).all()
 
 	form = CommentForm()
@@ -66,7 +67,7 @@ def post(post_id):
 		db.session.add(comment)
 		db.session.commit()
 		return redirect(url_for("posts.post", post_id=post.id))
-	return render_template("post.html", title=post.title, post=post, comments=comments, form=form)
+	return render_template("post.html", title=post.title, post=post, comments=comments, form=form, recent_posts=recent_posts)
 
 @posts.route('/post/<int:post_id>/update', methods=["GET", "POST"])
 @login_required
@@ -92,7 +93,8 @@ def update_post(post_id):
 					content = content.replace(attachment.filename, saved_image_path)
 				else:
 					flash(f"{attachment.filename}: This file is not supported.", "warning")
-		post.content = markdown2.markdown(content)
+		post.content = content
+		# post.content = markdown2.markdown(content)
 
 		if form.thumbnail.data:
 			post.thumbnail = save_thumbnail(form.thumbnail.data)

@@ -141,6 +141,13 @@
 		</div>
 	</form>
 </div>
+
+<div>
+	{% for post in recent_posts %}
+		<a href="{{url_for('posts.post', post_id=post.id)}}">{{post.title}}</a>
+	{% endfor %}
+</div>
+
 <!-- Modal https://getbootstrap.com/docs/4.0/components/modal/ -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
