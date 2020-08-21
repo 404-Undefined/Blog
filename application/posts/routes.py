@@ -10,6 +10,7 @@ import os
 import secrets
 from datetime import datetime
 from tzlocal import get_localzone
+from sqlalchemy import func
 
 posts = Blueprint("posts", __name__)
 
@@ -55,7 +56,7 @@ def new_post():
 @posts.route('/post/<int:post_id>', methods=["GET", "POST"])
 def post(post_id):
 	post = Post.query.get_or_404(post_id) #return post with this id; if it doesn't, return 404
-	recent_posts = Post.query.filter_by(draft=0).order_by(Post.date_posted.desc()).limit(3)
+	recent_posts = Post.query.filter(Post.draft == 0, Post.id != post_id).order_by(func.random()).limit(3).all()
 	comments = Comment.query.filter_by(post_id=post_id).all()
 
 	form = CommentForm()
