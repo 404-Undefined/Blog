@@ -81,7 +81,7 @@ def update_post(post_id):
 	form.tags.choices = [(tag.name, tag.name) for tag in Tag.query.all()]
 	if form.validate_on_submit():
 		post.title = form.title.data
-		post.draft = form.draft.data
+		post.draft = int(form.draft.data)
 
 		content = form.content.data
 		attachments = request.files.getlist(form.attachments.name)
@@ -129,7 +129,7 @@ def tag_posts(tag_name):
 	tag = Tag.query.filter_by(name=tag_name).first()
 	if not tag:
 		abort(404)
-	posts = tag.posts.order_by(Post.date_posted.desc()).paginate(per_page=5) #use the backref to access all posts with the tag
+	posts = tag.posts.filter_by(draft=0).order_by(Post.date_posted.desc()).paginate(per_page=5) #use the backref to access all posts with the tag
 	return render_template("tag_posts.html", tag=tag, title=tag.name, posts=posts)
 
 @posts.route('/post/<int:post_id>/<string:action>')
