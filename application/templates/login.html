@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+{% block content %}
+	<form method="POST" action=""> <!-- empty action means it will post back to the same route -->
+		{{ form.hidden_tag() }} <!-- Adds a CSRF (Cross Site Request Forgery) token -->
+		<fieldset class="form-group rlpadding">
+			<legend class="border-bottom mb-4"> Login </legend>
+
+			<div class="form-group row-width">
+				{{ form.email.label(class="form-control-label") }}
+
+				{% if form.email.errors %}
+					{{form.email(class="form-control form-control-lg is-invalid")}}
+					<div class="invalid-feedback">
+						{% for error in form.email.errors %}
+							<span> {{error}} </span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.email(class="form-control form-control-lg") }}
+				{% endif %}
+			</div>
+
+			<div class="form-group row-width">
+				{{ form.password.label(class="form-control-label") }}
+				
+				{% if form.password.errors %}
+					{{form.password(class="form-control form-control-lg is-invalid")}}
+					<div class="invalid-feedback">
+						{% for error in form.password.errors %}
+							<span> {{error}} </span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.password(class="form-control form-control-lg") }}
+				{% endif %}
+			</div>
+
+			<div class="form-check">
+				{{ form.remember(class="form-check-input")}}
+				{{ form.remember.label(class="form-check-label")}}
+			</div>
+
+		</fieldset>
+
+		<div class="form-group rlpadding">
+			{{ form.submit(class="btn btn-outline-info") }}
+			<small class="text-muted ml-2">
+				<a href="{{url_for('users.reset_request')}}">Forgot password?</a>
+			</small>
+		</div>
+
+	</form>
+
+	<div class="border-top pt-3 rlpadding">
+		<small class="text-muted">
+			Need An Account? <a class="ml-2" href="{{url_for('users.register') }}"> Register today </a> <!-- name of the function not route -->
+		</small>
+	</div>
+{% endblock content %} <!-- the name of the block "content" in endblock is optonal -->

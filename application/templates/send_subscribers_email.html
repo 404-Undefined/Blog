@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<form method="POST" action="">
+		{{ form.hidden_tag() }}
+		<fieldset>
+			<legend> Send Email to Subscribers </legend>
+
+			<div>
+				{{ form.subject.label }}
+
+				{% if form.subject.errors %}
+					{{form.subject}}
+					<div class="invalid-feedback">
+						{% for error in form.subject.errors %}
+							<span> {{error}} </span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.subject}}
+				{% endif %}
+			</div>
+
+			<div>
+				{{ form.content.label }}
+
+				{% if form.content.errors %}
+					{{form.content}}
+					<div class="invalid-feedback">
+						{% for error in form.content.errors %}
+							<span> {{error}} </span>
+						{% endfor %}
+					</div>
+				{% else %}
+					{{ form.content}}
+				{% endif %}
+			</div>
+			
+			<div>
+				{{form.test.label}}
+				{{form.test}}
+			</div>
+
+			{{form.submit }}
+		</fieldset>
+	</form>
+{% endblock content %}

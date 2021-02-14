@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<div class="content-selection rlpadding">
+		<form method="POST" action="" enctype="multipart/form-data"> <!-- empty action means it will post back to the same route -->
+			{{ form.hidden_tag() }} <!-- Adds a CSRF (Cross Site Request Forgery) token -->
+			<fieldset class="form-group">
+				<legend class="border-bottom mb-4"> {{legend}} </legend>
+
+				<div class="form-group row-width">
+					{{ form.title.label(class="form-control-label") }}
+
+					{% if form.title.errors %}
+						{{form.title(class="form-control form-control-lg is-invalid")}}
+						<div class="invalid-feedback">
+							{% for error in form.title.errors %}
+								<span> {{error}} </span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.title(class="form-control form-control-lg") }}
+					{% endif %}
+				</div>
+
+				<div class="form-group content-area">
+					{{ form.content.label(class="form-control-label") }}
+					
+					{% if form.content.errors %}
+						{{form.content(class="form-control form-control-lg is-invalid")}}
+						<div class="invalid-feedback">
+							{% for error in form.content.errors %}
+								<span> {{error}} </span>
+							{% endfor %}
+						</div>
+					{% else %}
+						{{ form.content(class="form-control form-control-lg") }}
+					{% endif %}
+				</div>
+
+				<div class="form-group">
+					{{form.draft.label(class="form-control-label")}}
+					{{form.draft}}
+					{% if form.draft.errors %}
+						{% for error in form.draft.errors %}
+							<span> {{error}} </span>
+						{% endfor %}
+					{% endif %}
+				</div>
+
+				<div class="form-group">
+					{{ form.tags.label }}
+					{{ form.tags }}
+				</div>
+
+				<div class="form-group">
+					{{form.attachments.label}}
+					{{form.attachments}}
+				</div>
+
+				<div class="form-group ">
+					{{ form.thumbnail.label() }}
+					{{form.thumbnail(class="form-control-file")}}
+
+					{% if form.thumbnail.errors %}
+						{% for error in form.thumbnail.errors %}
+							<span class="text-danger"> {{error}} </span></br>
+						{% endfor %}
+					{% endif %}
+				</div>
+			</fieldset>
+
+			<div class="form-group">
+				{{ form.submit(class="btn btn-outline-info") }}
+			</div>
+		</form>
+	</div>
+{% endblock content %} <!-- the name of the block "content" in endblock is optonal -->
