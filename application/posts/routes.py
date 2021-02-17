@@ -29,7 +29,7 @@ def new_post():
 		if attachments and all(f for f in attachments):
 			for attachment in attachments:
 				_, file_extension = os.path.splitext(attachment.filename)
-				if file_extension in [".jpg", ".jpeg", ".png", ".tiff"]:
+				if file_extension in [".jpg", ".jpeg", ".png", ".tiff", ".gif", ".mp4", ".mov"]:
 					saved_image_path = save_image(attachment)
 					content = content.replace(attachment.filename, saved_image_path)
 				else:
@@ -42,7 +42,7 @@ def new_post():
 
 		for tag_name in form.tags.data:
 			tag = Tag.query.filter_by(name=tag_name).first()
-			if tag_name == "Daily Digest": #clear all other tags with daily digest tag
+			if tag_name == "Featured": #clear all other tags with daily digest tag
 				tag.posts = []
 			tag.posts.append(post)
 
