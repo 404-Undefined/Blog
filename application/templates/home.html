@@ -69,45 +69,7 @@
 <div class="home-m">
   <!-- row -->
   <div class="row">
-    {% if featured_posts %} {% for post in featured_posts %}
-    <div class="col-md-10 col-lg-8">
-      <div class="post" data-aos="fade-up">
-        <div class="parent">
-          <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"
-            ><img
-              class="img-div-body"
-              src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
-              alt="post thumbnail"
-          /></a>
-        </div>
-        <div class="post-body">
-          <div class="post-meta">
-            <a
-              class="post-category"
-              style="background-color: black;"
-              href="{{url_for('posts.tag_posts', tag_name= 'Featured', page=1)}}"
-            >Featured</a>
-            <span class="post-date">
-              {{ post.date_posted.strftime("%B %d, %Y") }}
-            </span>
-            <span
-              ><a
-                href="{{url_for('users.user_posts', username=post.author.username)}}"
-                class="h-author"
-                >{{ post.author.username }}</a
-              ></span>
-            
-          </div>
-          <h3 class="post-title" id="post-t">
-            <a href="{{url_for('posts.post', post_id=post.id)}}"
-              >{{ post.title }}</a
-            >
-          </h3>
-        </div>
-      </div>
-    </div>
-    {% endfor %} {% endif %}
-    <div class="col-md-2 col-lg-2 d-none d-lg-block cat-block">
+        <div class="col-md-2 col-lg-2 d-none d-lg-block cat-block">
       <div class="section-title">
         <h3>Categories</h3>
       </div>
@@ -152,6 +114,45 @@
         </li>
       </ul>
     </div>
+    {% if featured_posts %} {% for post in featured_posts %}
+    <div class="col-md-10 col-lg-8">
+      <div class="post" data-aos="fade-up">
+        <div class="parent">
+          <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"
+            ><img
+              class="img-div-body"
+              src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
+              alt="post thumbnail"
+          /></a>
+        </div>
+        <div class="post-body">
+          <div class="post-meta">
+            <a
+              class="post-category"
+              style="background-color: black;"
+              href="{{url_for('posts.tag_posts', tag_name= 'Featured', page=1)}}"
+            >Featured</a>
+            <span class="post-date">
+              {{ post.date_posted.strftime("%B %d, %Y") }}
+            </span>
+            <span
+              ><a
+                href="{{url_for('users.user_posts', username=post.author.username)}}"
+                class="h-author"
+                >{{ post.author.username }}</a
+              ></span>
+            
+          </div>
+          <h3 class="post-title" id="post-t">
+            <a href="{{url_for('posts.post', post_id=post.id)}}"
+              >{{ post.title }}</a
+            >
+          </h3>
+        </div>
+      </div>
+    </div>
+    {% endfor %} {% endif %}
+
   </div>
   <div class="row">
     <div class="col-lg-12">
