@@ -109,7 +109,7 @@ def user_posts(username):
     user = User.query.filter_by(username=username).first_or_404()
     posts = Post.query.filter_by(author=user, draft=0)\
     .order_by(Post.date_posted.desc())\
-    .paginate(page=page, per_page=5) #5 posts per page in descending order of date
+    .paginate(page=page, per_page=6) #5 posts per page in descending order of date
     return render_template("user_posts.html", posts=posts, user=user)
 
 
