@@ -51,69 +51,6 @@
   <div class="row">
     <div class="col-lg-12">
       <div class="section-title">
-        <h2>Daily Digest</h2>
-      </div>
-      <div class="row">
-        {% if daily_digest %}
-        <div class="col-lg-12">
-          <div class="post" data-aos="fade-up">
-            <div class="parent">
-              <a
-                class="post-img"
-                href="{{url_for('posts.post', post_id=daily_digest.id)}}"
-                ><img
-                  class="img-div-body"
-                  src="{{url_for('static', filename='thumbnails/' + daily_digest.thumbnail)}}"
-                  alt="post thumbnail"
-              /></a>
-            </div>
-
-            <div class="post-body">
-              <div class="post-meta">
-                {% for tag in daily_digest.tags %}
-                <!-- don't add link for daily digest tag -->
-                {% if tag.name == "Daily Digest" %}
-                <span
-                  class="post-category"
-                  style="background-color: {{tag.colour}};"
-                >
-                  {{tag.name}}</span
-                >
-                {% else %}
-                <a
-                  class="post-category"
-                  style="background-color: {{tag.colour}};"
-                  href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"
-                >
-                  {{tag.name}}</a
-                >
-                {% endif %} {% endfor %}
-                <span class="post-date">
-                  {{ daily_digest.date_posted.strftime("%B %d, %Y") }}
-                </span>
-
-                <span class="h-author"
-                  ><a
-                    href="{{url_for('users.user_posts', username=daily_digest.author.username)}}"
-                    >{{ daily_digest.author.username }}</a
-                  ></span
-                >
-              </div>
-              <h3 class="post-title" id="post-t">
-                <a href="{{url_for('posts.post', post_id=daily_digest.id)}}"
-                  >{{ daily_digest.title }}</a
-                >
-              </h3>
-            </div>
-          </div>
-        </div>
-        {% endif %}
-      </div>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <div class="section-title">
         <h2>Recent Posts</h2>
       </div>
     </div>
