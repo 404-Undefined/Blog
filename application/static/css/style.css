@@ -55,7 +55,7 @@ a {
 
 a:hover {
   font-weight: 600;
-  color: #37818d;
+  color: #37818d !important;
   text-decoration: underline;
 }
 
@@ -95,6 +95,10 @@ p {
 .section-row {
   margin-bottom: 40px;
 }
+.section-title{
+  font-size: 20px;
+
+}
 
 .img-div-body {
   object-fit: cover;
@@ -118,9 +122,67 @@ p {
   text-align: center;
 }
 
+.blog-sub{
+  font-weight: 300;
+  color: #37818d;
+}
 .post-title a {
   color: black;
 }
+.tee{
+  width: 100%;
+  color: #111; 
+  font-family: 'Helvetica Neue', sans-serif;
+  font-size: 30px; 
+  font-weight: bold; 
+  letter-spacing: -1px; 
+  line-height: 1; 
+  color: white;
+  padding: 20px;
+  background-color: black;
+  border: 1px solid #000;
+  text-align: center;
+  margin: 20px;
+  
+}
+@media only screen and (max-width: 540px) {
+
+}
+@media screen and (max-width: 767px) {
+  .carousel-item img{
+  object-fit: cover;
+  width: 100%;
+  height: 60vh;
+  max-height: 60vh;
+  margin: auto; 
+  display: block;
+  background-position: center 25%;
+ }
+ .img-div-body {
+  object-fit: cover;
+  width: 100%;
+  height: 30vh;
+}
+}
+
+@media screen and (min-width: 768px) {
+
+ .carousel-item img{
+  object-fit: cover;
+  width: 100%;
+  height: 97vh;
+  max-height: 97vh;
+  margin: auto; 
+  display: block;
+  background-position: center 25%;
+ }
+ .img-div-body {
+  object-fit: cover;
+  width: 100%;
+  height: 50vh;
+}
+}
+
 
 .post-title a:hover {
   color: #37818d;
@@ -415,7 +477,7 @@ p {
 }
 
 .nav-link {
-  color: white !important;
+  color: black !important;
 }
 
 .chessBoard {

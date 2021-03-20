@@ -1,10 +1,77 @@
 {% extends "base.html" %} {% block content %}
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li
+      data-target="#carouselExampleIndicators"
+      data-slide-to="0"
+      class="active"
+    ></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    
+    <div class="carousel-item active">
+      <img
+        class="d-block w-100"
+        src="https://undefinedblog.s3.amazonaws.com/static/thumbnails/f870111626105b81.jpeg"
+        alt="Second slide"
+      />
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="tee">Simulating Coriolis Effect</h5>
+      </div>
+    </div>
+    <div class="carousel-item">
+      <img
+        class="d-block w-100"
+        src="https://undefinedblog.s3.amazonaws.com/static/thumbnails/a32fc3f1605650f5.jpg"
+        alt="First slide" style="display:inline-block  !important;"
+      />
+      <div class="carousel-caption d-none d-md-block">
+        <h5 class="tee">Deriving Escape Velocity</h5>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img
+        class="d-block w-100"
+        src="https://undefinedblog.s3.amazonaws.com/static/thumbnails/5a80802d5a1a64e4.png"
+        alt="Third slide"
+      />
+            <div class="carousel-caption d-none d-md-block">
+        <h5 class="tee">Robotics Research</h5>
+      </div>
+    </div>
+
+
+  </div>
+  <a
+    class="carousel-control-prev"
+    href="#carouselExampleIndicators"
+    role="button"
+    data-slide="prev"
+  >
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a
+    class="carousel-control-next"
+    href="#carouselExampleIndicators"
+    role="button"
+    data-slide="next"
+  >
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+
 <!-- container -->
 <div class="home-m">
   <!-- row -->
   <div class="row">
+    
     {% if featured_posts %} {% for post in featured_posts %}
-    <div class="col-lg-6">
+    <div class="col-md-10 col-lg-8">
       <div class="post" data-aos="fade-up">
         <div class="parent">
           <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"
@@ -16,26 +83,21 @@
         </div>
         <div class="post-body">
           <div class="post-meta">
-            
             <a
               class="post-category"
               style="background-color: black;"
               href="{{url_for('posts.tag_posts', tag_name= 'Featured', page=1)}}"
-            >
-              Featured</a
-            >
-            
+            >Featured</a>
             <span class="post-date">
               {{ post.date_posted.strftime("%B %d, %Y") }}
             </span>
-
             <span
               ><a
                 href="{{url_for('users.user_posts', username=post.author.username)}}"
                 class="h-author"
                 >{{ post.author.username }}</a
-              ></span
-            >
+              ></span>
+            
           </div>
           <h3 class="post-title" id="post-t">
             <a href="{{url_for('posts.post', post_id=post.id)}}"
@@ -46,79 +108,61 @@
       </div>
     </div>
     {% endfor %} {% endif %}
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12">
+      <div class="col-md-2 col-lg-2 d-none d-lg-block cat-block">
       <div class="section-title">
-        <h2>Daily Digest</h2>
+        <h3>Categories</h3>
       </div>
-      <div class="row">
-        {% if daily_digest %}
-        <div class="col-lg-12">
-          <div class="post" data-aos="fade-up">
-            <div class="parent">
-              <a
-                class="post-img"
-                href="{{url_for('posts.post', post_id=daily_digest.id)}}"
-                ><img
-                  class="img-div-body"
-                  src="{{url_for('static', filename='thumbnails/' + daily_digest.thumbnail)}}"
-                  alt="post thumbnail"
-              /></a>
-            </div>
+      <hr>
 
-            <div class="post-body">
-              <div class="post-meta">
-                {% for tag in daily_digest.tags %}
-                <!-- don't add link for daily digest tag -->
-                {% if tag.name == "Daily Digest" %}
-                <span
-                  class="post-category"
-                  style="background-color: {{tag.colour}};"
-                >
-                  {{tag.name}}</span
-                >
-                {% else %}
-                <a
-                  class="post-category"
-                  style="background-color: {{tag.colour}};"
-                  href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}"
-                >
-                  {{tag.name}}</a
-                >
-                {% endif %} {% endfor %}
-                <span class="post-date">
-                  {{ daily_digest.date_posted.strftime("%B %d, %Y") }}
-                </span>
-
-                <span class="h-author"
-                  ><a
-                    href="{{url_for('users.user_posts', username=daily_digest.author.username)}}"
-                    >{{ daily_digest.author.username }}</a
-                  ></span
-                >
-              </div>
-              <h3 class="post-title" id="post-t">
-                <a href="{{url_for('posts.post', post_id=daily_digest.id)}}"
-                  >{{ daily_digest.title }}</a
-                >
-              </h3>
-            </div>
-          </div>
-        </div>
-        {% endif %}
-      </div>
+      <ul class="navbar-nav" style="list-style-type: circle; margin-left: 30px">
+        <li class="nav-item" >
+          <a
+            class="nav-link"
+            href="{{url_for('posts.tag_posts', tag_name='Coding', page=1)}}"
+            >Coding</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="{{url_for('posts.tag_posts', tag_name='Hardware', page=1)}}"
+            >Hardware</a
+          >
+        </li>                
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="{{url_for('posts.tag_posts', tag_name='Xiangqi', page=1)}}"
+              >Xiangqi</a
+          >
+        </li>
+                
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="{{url_for('posts.tag_posts', tag_name='Chess', page=1)}}"
+            >Chess</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="{{url_for('posts.tag_posts', tag_name='Maths', page=1)}}"
+            >Maths</a
+          >
+        </li>
+      </ul>
     </div>
   </div>
   <div class="row">
     <div class="col-lg-12">
       <div class="section-title">
-        <h2>Recent Posts</h2>
+        <h5>Recent Posts</h5>
       </div>
     </div>
+    <hr>
     {% for post in posts.items %}
-    <div class="col-lg-4">
+    <div class="col-md-10 col-lg-8">
       <div class="post" data-aos="fade-up">
         <div class="parent">
           <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"
@@ -162,7 +206,6 @@
     {% endfor %}
   </div>
 </div>
-
 <div class="bg-modal">
   <div class="modal-contents">
     <div class="close">+</div>
@@ -186,12 +229,12 @@
 <div class="center-text">
   {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1,
   right_current=2) %} {% if page_num %} {% if posts.page == page_num %}
-  <a class="btn btn-info mb-4" href="{{url_for('main.home', page=page_num)}}"
+  <a class="btn btn-light mb-4" href="{{url_for('main.home', page=page_num)}}"
     >{{page_num}}</a
   >
   {% else %}
   <a
-    class="btn btn-outline-info mb-4"
+    class="btn btn-outline-light mb-4"
     href="{{url_for('main.home', page=page_num)}}"
     >{{page_num}}</a
   >
@@ -203,3 +246,5 @@
   AOS.init();
 </script>
 {% endblock javascript %}
+
+
