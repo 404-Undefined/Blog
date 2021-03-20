@@ -1,6 +1,6 @@
 from flask import Flask
 from application.config import Config
-from application.database import db
+from application.database import db, migrate
 from flask_bcrypt import Bcrypt
 from flask_login import LoginManager
 from flask_mail import Mail
@@ -25,6 +25,7 @@ def create_app(config_class=Config):
 	mail.init_app(app)
 	admin.init_app(app)
 	s3.init_app(app)
+	migrate.init_app(app, db)
 
 	from application.main.routes import main
 	from application.users.routes import users
