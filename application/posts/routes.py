@@ -42,9 +42,10 @@ def new_post():
 
 		for tag_name in form.tags.data:
 			tag = Tag.query.filter_by(name=tag_name).first()
-			if tag_name == "Featured": #clear all other tags with daily digest tag
-				tag.posts = []
 			tag.posts.append(post)
+
+			if tag_name == "Featured": #max 3 most recent Featured posts at any given time
+				tag.posts = tag.posts[-3:]
 
 		db.session.add(post)
 		db.session.commit()
@@ -100,9 +101,12 @@ def update_post(post_id):
 		if form.thumbnail.data:
 			post.thumbnail = save_thumbnail(form.thumbnail.data)
 
-		for tag in form.tags.data:
-			tag = Tag.query.filter_by(name=tag).first()
+		for tag_name in form.tags.data:
+			tag = Tag.query.filter_by(name=tag_name).first()
 			tag.posts.append(post)
+
+			if tag_name == "Featured": #max 3 most recent Featured posts at any given time
+				tag.posts = tag.posts[-3:]
 		db.session.commit() #We're updating something that is already in the database, so no need for db.session.add()
 		flash("Your post has been updated!", "success")
 		return redirect(url_for("posts.post", post_id=post.id))
@@ -129,7 +133,7 @@ def tag_posts(tag_name):
 	tag = Tag.query.filter_by(name=tag_name).first()
 	if not tag:
 		abort(404)
-	posts = tag.posts.filter_by(draft=0).order_by(Post.date_posted.desc()).paginate(per_page=5) #use the backref to access all posts with the tag
+	posts = tag.posts.filter_by(draft=0).order_by(Post.date_posted.desc()).paginate(per_page=6) #use the backref to access all posts with the tag
 	return render_template("tag_posts.html", tag=tag, title=tag.name, posts=posts)
 
 @posts.route('/post/<int:post_id>/<string:action>')
