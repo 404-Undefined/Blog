@@ -103,6 +103,7 @@
 		{{ form.hidden_tag() }}
 		<fieldset>
 			<legend> Leave a Comment </legend>
+			{{ form.username }} <!-- Hidden field spam prevention trick -->
 			{% if current_user.is_authenticated %}
 				<div> Commenting as {{current_user.username}} </div>
 			{% else %}

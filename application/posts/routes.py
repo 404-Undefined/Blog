@@ -62,6 +62,8 @@ def post(post_id):
 
 	form = CommentForm()
 	if form.validate_on_submit():
+		if form.username.data != "do_not_change": #spam prevention, hidden field
+			return redirect(url_for("main.home"))
 		if current_user.is_authenticated:
 			comment = Comment(name=current_user.username, content=form.content.data, post_id=post_id, timestamp=datetime.now(get_localzone()))
 		else:
@@ -128,15 +130,16 @@ def delete_post(post_id):
 	flash("Your post has been deleted!", "success")
 	return redirect(url_for("main.home"))
 
-@posts.route("/post/<string:tag_name>")
+@posts.route("/<string:tag_name>")
 def tag_posts(tag_name):
+	page = request.args.get("page", 1, type=int)
 	tag = Tag.query.filter_by(name=tag_name).first()
 	if not tag:
 		abort(404)
-	posts = tag.posts.filter_by(draft=0).order_by(Post.date_posted.desc()).paginate(per_page=6) #use the backref to access all posts with the tag
+	posts = tag.posts.filter_by(draft=0).order_by(Post.date_posted.desc()).paginate(page=page, per_page=6) #use the backref to access all posts with the tag
 	return render_template("tag_posts.html", tag=tag, title=tag.name, posts=posts)
 
-@posts.route('/post/<int:post_id>/<string:action>')
+@posts.route('/<int:post_id>/<string:action>')
 @login_required
 def like_action(post_id, action):
 	post = Post.query.get_or_404(post_id)
