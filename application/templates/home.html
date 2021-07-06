@@ -110,14 +110,13 @@
           <div class="section-title">
             <h3>Categories</h3>
           </div>
-          <br />
-          <ul class="navbar-nav" style="list-style-type: circle; margin-left: 30px">
+          <div class="post-body">
+            <div class="post-meta">
             {% for tag in tags %}
-              <li class="nav-item">
-                <a class="nav-link" href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}">{{tag.name}}</a>
-              </li>
+              <a class="post-category" style="background-color: {{tag.colour}}; width: 100%" href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}">{{tag.name}}</a>
             {% endfor %}
-          </ul>
+            </div>
+          </div>
           <br />
 
           <div class="section-title">
@@ -125,7 +124,14 @@
           </div>
           <br />
           <iframe src="https://www.youtube.com/embed/yCsgoLc_fzI" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-          <iframe src="https://www.youtube.com/embed/SjJulcvTA7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>        </div> <!-- end col-md-12 -->
+          <iframe src="https://www.youtube.com/embed/SjJulcvTA7Y" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>   
+          <iframe src="https://www.youtube.com/embed/mWj1ZEQTI8I" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>     
+          <br />
+          <div class="section-title">
+            <h3>Books</h3>
+          </div>
+        
+        </div> <!-- end col-md-12 -->
         
         
         <div id="722891576">
