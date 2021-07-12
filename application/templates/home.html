@@ -21,7 +21,7 @@
         <div class="carousel-item">
       {% endif %}
 
-      <a href="{{url_for('posts.post', post_id=featured_post.id)}}">
+      <a href="{{url_for('posts.post', post_title=featured_post.title)}}">
         <img
           class="d-block w-100"
           src="{{url_for('static', filename='thumbnails/' + featured_post.thumbnail)}}"
@@ -74,7 +74,7 @@
             <div class="parent">
               <a
                 class="post-img"
-                href="{{url_for('posts.post', post_id=post.id)}}"
+                href="{{url_for('posts.post', post_title=post.title)}}"
                 ><img
                   class="img-div-body"
                   src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
@@ -95,7 +95,7 @@
                 </span>
               </div>
               <h3 class="post-title" id="post-t">
-                <a href="{{url_for('posts.post', post_id=post.id)}}">{{ post.title }}</a>
+                <a href="{{url_for('posts.post', post_title=post.title)}}">{{ post.title }}</a>
               </h3>
             </div> <!-- end post-body -->
           </div> <!-- end class=post -->

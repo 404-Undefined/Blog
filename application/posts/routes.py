@@ -50,27 +50,25 @@ def new_post():
 		db.session.add(post)
 		db.session.commit()
 		flash(f"Your post has been created! {form.draft.data} {type(form.draft.data)}", "success")
-		return redirect(url_for("posts.post", post_id=post.id))
+		return redirect(url_for("posts.post", post_title=post.title))
 
 	return render_template("create_post.html", title="New Post", form=form)
 
-@posts.route('/post/<int:post_id>', methods=["GET", "POST"])
-def post(post_id):
-	post = Post.query.get_or_404(post_id) #return post with this id; if it doesn't, return 404
-	recent_posts = Post.query.filter(Post.draft == 0, Post.id != post_id).order_by(func.random()).limit(3).all()
-	comments = Comment.query.filter_by(post_id=post_id).all()
+@posts.route('/post/<string:post_title>', methods=["GET", "POST"])
+def post(post_title):
+	post = Post.query.filter_by(title=post_title).first_or_404() #return post with this title; if it doesn't, return 404
+	recent_posts = Post.query.filter(Post.draft == 0, Post.id != post.id).order_by(func.random()).limit(3).all()
+	comments = Comment.query.filter_by(post_id=post.id).all()
 
 	form = CommentForm()
 	if form.validate_on_submit():
-		if form.username.data != "do_not_change": #spam prevention, hidden field
-			return redirect(url_for("main.home"))
 		if current_user.is_authenticated:
-			comment = Comment(name=current_user.username, content=form.content.data, post_id=post_id, timestamp=datetime.now(get_localzone()))
+			comment = Comment(name=current_user.username, content=form.content.data, post_id=post.id, timestamp=datetime.now(get_localzone()))
 		else:
-			comment = Comment(name=form.name.data, content=form.content.data, post_id=post_id, timestamp=datetime.now(get_localzone()))
+			comment = Comment(name=form.name.data, content=form.content.data, post_id=post.id, timestamp=datetime.now(get_localzone()))
 		db.session.add(comment)
 		db.session.commit()
-		return redirect(url_for("posts.post", post_id=post.id))
+		return redirect(url_for("posts.post", post_title=post.title))
 	return render_template("post.html", title=post.title, post=post, comments=comments, form=form, recent_posts=recent_posts)
 
 @posts.route('/post/<int:post_id>/update', methods=["GET", "POST"])
@@ -111,7 +109,7 @@ def update_post(post_id):
 				tag.posts = tag.posts[-3:]
 		db.session.commit() #We're updating something that is already in the database, so no need for db.session.add()
 		flash("Your post has been updated!", "success")
-		return redirect(url_for("posts.post", post_id=post.id))
+		return redirect(url_for("posts.post", post_title=post.title))
 	elif request.method == "GET":
 		form.title.data = post.title
 		form.content.data = post.content
@@ -149,4 +147,4 @@ def like_action(post_id, action):
 	elif action == 'unlike':
 		current_user.unlike_post(post)
 		db.session.commit()
-	return redirect(url_for('posts.post', post_id=post_id))
+	return redirect(url_for('posts.post', post_title=post.title))

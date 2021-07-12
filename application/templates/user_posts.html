@@ -22,7 +22,7 @@
             <div class="col-md-4">
                 <div class="post">
                     <div class="parent">
-                        <a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"><img class="img-div-body"
+                        <a class="post-img" href="{{url_for('posts.post', post_title=post.title)}}"><img class="img-div-body"
                                 src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
                                 alt="post thumbnail"></a>
                     </div>
@@ -38,7 +38,7 @@
                                     href="{{url_for('users.user_posts', username=post.author.username)}}">{{ post.author.username }}</a></span>
                         </div>
                         <h3 class="post-title" id="post-t"><a
-                                href="{{url_for('posts.post', post_id=post.id)}}">{{ post.title }}</a></h3>
+                                href="{{url_for('posts.post', post_title=post.title)}}">{{ post.title }}</a></h3>
                     </div>
                 </div>
             </div>

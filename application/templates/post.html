@@ -158,7 +158,7 @@
 			<div class="col-md-4">
 				<div class="post">
 					<div class="parent">
-						<a class="post-img" href="{{url_for('posts.post', post_id=post.id)}}"
+						<a class="post-img" href="{{url_for('posts.post', post_title=post.title)}}"
 							><img
 							class="img-div-body"
 							src="{{url_for('static', filename='thumbnails/' + post.thumbnail)}}"
@@ -179,7 +179,7 @@
 							class="h-author">{{ post.author.username }}</a>
 					</div>
 					<h3 class="post-title" id="post-t">
-						<a href="{{url_for('posts.post', post_id=post.id)}}"
+						<a href="{{url_for('posts.post', post_title=post.title)}}"
 						>{{ post.title }}</a
 						>
 					</h3>
