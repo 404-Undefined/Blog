@@ -137,8 +137,13 @@
       </div>
     </fieldset>
 		<div class="button-area">
-			{{ form.submit }}
+			<span>
+				{{ form.submit }}
+			</span>
+
+			<span style="float: right;"><span id="characters"></span>/200 Characters</span>
 		</div>
+		
 	</form>
 </div>
 <div class="home-m" style="padding-bottom:50px;">
@@ -207,3 +212,15 @@
   </div>
 </div>
 {% endblock content %}
+{% block javascript %}
+<script>
+$('#content').attr("maxlength", 200)
+$('#content').keyup(updateCount);
+$('#content').keydown(updateCount);
+
+function updateCount() {
+    var cs = $(this).val().length;
+    $('#characters').text(cs);
+}
+</script>
+{% endblock javascript %}
