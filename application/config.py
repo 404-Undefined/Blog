@@ -6,6 +6,8 @@ load_dotenv()
 class Config:
 	SECRET_KEY = os.getenv("SECRET_KEY")
 	SQLALCHEMY_DATABASE_URI = os.getenv("SQLALCHEMY_DATABASE_URI")
+	FLASKS3_BUCKET_NAME = os.getenv("S3_BUCKET_NAME")
+	FLASKS3_REGION = os.getenv("S3_REGION")
 	SQLALCHEMY_TRACK_MODIFICATIONS = False
 
 	MAIL_SERVER = "smtp.googlemail.com"
@@ -13,8 +15,5 @@ class Config:
 	MAIL_USE_TLS = True
 	MAIL_USERNAME = os.getenv("MAIL_USERNAME")
 	MAIL_PASSWORD = os.getenv("MAIL_PASSWORD")
-
-	FLASKS3_BUCKET_NAME = "undefinedblog"
-	FLASKS3_REGION = "ap-northeast-1"
 
 	SEND_FILE_MAX_AGE_DEFAULT = -1
