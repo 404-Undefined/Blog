@@ -1,6 +1,11 @@
 {% extends "base.html" %} 
 
 {% block content %}
+<style>
+  .dis-highlight:hover{
+    color: white !important;
+  }
+</style>
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
     <li
@@ -109,7 +114,7 @@
           <div class="post-body">
             <div class="post-meta">
             {% for tag in tags %}
-              <a class="post-category" style="background-color: {{tag.colour}}; width: 100%" href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}">{{tag.name}}</a>
+              <a class="dis-highlight post-category" style="background-color: {{tag.colour}}; width: 100%; " href="{{url_for('posts.tag_posts', tag_name=tag.name, page=1)}}">{{tag.name}}</a>
             {% endfor %}
             </div>
           </div>
